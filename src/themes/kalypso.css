@@ -1,0 +1,15 @@
+/* kalypso - Light */
+:root[data-theme="kalypso"][data-mode="light"] {
+  --color-bg: #ffffff;
+  --color-surface: #FBF6F6;
+  --color-text: #0f172a;
+  --color-primary: #9B0F06;
+}
+
+/* kalypso - Dark */
+:root[data-theme="kalypso"][data-mode="dark"] {
+  --color-bg: #020617;
+  --color-surface: #020617;
+  --color-text: #e5e7eb;
+  --color-primary: #5E0006;
+}
