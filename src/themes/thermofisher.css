@@ -1,0 +1,13 @@
+:root[data-theme="thermofisher"][data-mode="light"] {
+  --color-bg: #fdf2f8;
+  --color-surface: #fff1f2;
+  --color-text: #4a044e;
+  --color-primary: #ec4899;
+}
+
+:root[data-theme="thermofisher"][data-mode="dark"] {
+  --color-bg: #2a1020;
+  --color-surface: #3b0f2a;
+  --color-text: #fce7f3;
+  --color-primary: #f472b6;
+}
