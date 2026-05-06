@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import type { ReactNode } from "react";
 
 type ThemeContextType = {
   theme: string;
@@ -7,9 +8,13 @@ type ThemeContextType = {
   setMode: (mode: "light" | "dark") => void;
 };
 
+type ThemeProviderProps = {
+  children: ReactNode;
+};
+
 const ThemeContext = createContext<ThemeContextType>(null!);
 
-export const ThemeProvider = ({ children }) => {
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setTheme] = useState("kalypso");
   const [mode, setMode] = useState<"light" | "dark">("light");
 

@@ -1,0 +1,53 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background-color: rgb(var(--color-text) / 0.45);
+  padding: var(--space-4);
+}
+
+.modal {
+  width: min(38rem, 100%);
+  border: 1px solid rgb(var(--color-neutral));
+  border-radius: var(--radius-lg);
+  background-color: rgb(var(--color-surface));
+  color: rgb(var(--color-text));
+  box-shadow: 0 20px 40px rgb(var(--color-text) / 0.25);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid rgb(var(--color-neutral));
+
+    h2 {
+      margin: 0;
+      font-size: 1.125rem;
+    }
+  }
+
+  &__close {
+    min-height: var(--size-control-sm);
+    border: 1px solid rgb(var(--color-neutral));
+    border-radius: var(--radius-md);
+    background-color: rgb(var(--color-bg));
+    color: rgb(var(--color-text));
+    padding-inline: var(--space-3);
+    cursor: pointer;
+  }
+
+  &__body {
+    padding: var(--space-5);
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    padding: 0 var(--space-5) var(--space-5);
+  }
+}

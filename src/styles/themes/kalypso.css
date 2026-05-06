@@ -1,0 +1,41 @@
+/* kalypso - Light */
+:root[data-theme="kalypso"][data-mode="light"] {
+  /* Base surfaces */
+  --color-bg: 255 255 255;
+  --color-surface: 247 247 247;
+
+  /* Neutrals */
+  --color-neutral: 231 231 231;
+  --color-text: 15 15 15;
+
+  /* Brand */
+  --color-primary: 144 27 49;
+  --color-secondary: 93 198 193;
+
+  /* States */
+  --color-success: 47 174 158;
+  --color-danger: 189 22 63;
+  --color-warning: 217 164 65;
+  --color-info: 174 226 224;
+}
+
+/* kalypso - Dark */
+:root[data-theme="kalypso"][data-mode="dark"] {
+  /* Base surfaces */
+  --color-bg: 15 18 22;
+  --color-surface: 22 26 31;
+
+  /* Neutrals */
+  --color-neutral: 64 69 74;
+  --color-text: 232 234 237;
+
+  /* Brand */
+  --color-primary: 185 55 75;
+  --color-secondary: 122 210 203;
+
+  /* States */
+  --color-success: 96 206 185;
+  --color-danger: 235 92 120;
+  --color-warning: 224 181 92;
+  --color-info: 128 208 204;
+}

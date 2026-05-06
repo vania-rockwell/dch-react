@@ -1,0 +1,112 @@
+.app-shell {
+  min-height: 100vh;
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
+
+  &__body {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    min-height: calc(100vh - var(--space-header-height));
+  }
+
+  &__main {
+    padding: var(--space-6);
+  }
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: var(--space-header-height);
+  padding-inline: var(--space-6);
+  border-bottom: 1px solid rgb(var(--color-neutral) / 0.9);
+  background-color: rgb(var(--color-surface) / 0.96);
+  backdrop-filter: blur(4px);
+
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.app-subtitle {
+  margin: 0;
+  font-size: 0.8125rem;
+  opacity: 0.75;
+}
+
+.field-inline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.875rem;
+}
+
+.app-sidebar {
+  width: 17rem;
+  overflow-x: hidden;
+  border-right: 1px solid rgb(var(--color-neutral) / 0.9);
+  background-color: rgb(var(--color-surface));
+  padding: var(--space-4);
+  transition: width 160ms ease;
+
+  &.is-collapsed {
+    width: 4.5rem;
+
+    .sidebar-link__label {
+      display: none;
+    }
+  }
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--size-control-md);
+  border-radius: var(--radius-md);
+  padding-inline: var(--space-3);
+  text-decoration: none;
+  color: rgb(var(--color-text));
+
+  &:hover {
+    background-color: rgb(var(--color-neutral) / 0.45);
+  }
+
+  &.is-active {
+    background-color: rgb(var(--color-primary) / 0.18);
+    color: rgb(var(--color-primary));
+    font-weight: 600;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 9999px;
+    background-color: rgb(var(--color-primary) / 0.16);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+}

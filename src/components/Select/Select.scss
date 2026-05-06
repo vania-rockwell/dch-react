@@ -1,0 +1,32 @@
+.select {
+  border: 1px solid rgb(var(--color-neutral));
+  border-radius: var(--radius-md);
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
+  padding-inline: var(--space-3);
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid rgb(var(--color-primary) / 0.45);
+    outline-offset: 1px;
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &--sm {
+    min-height: var(--size-control-sm);
+    font-size: 0.875rem;
+  }
+
+  &--md {
+    min-height: var(--size-control-md);
+    font-size: 1rem;
+  }
+
+  &--lg {
+    min-height: var(--size-control-lg);
+    font-size: 1.125rem;
+  }
+}

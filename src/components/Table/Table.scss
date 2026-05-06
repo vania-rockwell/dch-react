@@ -1,0 +1,35 @@
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid rgb(var(--color-neutral));
+  border-radius: var(--radius-lg);
+  background-color: rgb(var(--color-surface));
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 32rem;
+
+  th,
+  td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid rgb(var(--color-neutral) / 0.8);
+  }
+
+  th {
+    background-color: rgb(var(--color-bg));
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgb(var(--color-text));
+  }
+
+  tbody tr:hover {
+    background-color: rgb(var(--color-neutral) / 0.25);
+  }
+
+  &__empty {
+    padding: var(--space-6);
+    text-align: center;
+    opacity: 0.75;
+  }
+}

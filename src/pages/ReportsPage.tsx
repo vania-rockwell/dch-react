@@ -1,4 +1,4 @@
-import PageSection from "../components/PageSection";
+import PageSection from "../components/PageSection/PageSection";
 
 export default function ReportsPage() {
   return (
@@ -7,8 +7,8 @@ export default function ReportsPage() {
       description="View reports and analytics for recent activity."
     >
       <p>
-        Reports provide detailed views of your data. Add charts, filters,
-        export actions, and trend insights here.
+        Reports provide detailed views of your data. Add charts, filters, export
+        actions, and trend insights here.
       </p>
     </PageSection>
   );
