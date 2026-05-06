@@ -1,0 +1,22 @@
+{
+  "actions": {
+    "close": "Close",
+    "dismiss": "Dismiss",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode"
+  },
+  "aria": {
+    "toggleColorMode": "Toggle color mode",
+    "expandMenu": "Expand menu",
+    "collapseMenu": "Collapse menu",
+    "mainNavigation": "Main navigation"
+  },
+  "fields": {
+    "theme": "Theme",
+    "language": "Language"
+  },
+  "languageOption": {
+    "en": "English",
+    "es": "Español"
+  }
+}

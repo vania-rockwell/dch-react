@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import "./Modal.scss";
 
 type ModalProps = {
@@ -16,6 +17,8 @@ export default function Modal({
   onClose,
   actions,
 }: ModalProps) {
+  const { t } = useTranslation("common");
+
   if (!open) {
     return null;
   }
@@ -32,7 +35,7 @@ export default function Modal({
         <header className="modal__header">
           <h2>{title}</h2>
           <button type="button" className="modal__close" onClick={onClose}>
-            Close
+            {t("actions.close")}
           </button>
         </header>
         <div className="modal__body">{children}</div>

@@ -1,0 +1,46 @@
+{
+  "dashboard": {
+    "title": "Dashboard",
+    "description": "Overview of the most important metrics and status.",
+    "body": "The dashboard gives you a starting point for top-level system health, usage summaries, and recent activity."
+  },
+  "catalogs": {
+    "title": "Catalogs",
+    "description": "Browse and manage available catalogs for configuration.",
+    "body": "Use catalogs to review available entities, organize sources, and define reusable structures."
+  },
+  "parameters": {
+    "title": "Parameters",
+    "description": "Define and maintain configuration parameters.",
+    "body": "Parameters control system behavior and defaults across configured modules."
+  },
+  "templates": {
+    "title": "Templates",
+    "description": "Create and manage reusable configuration templates.",
+    "body": "Templates help standardize setup patterns and reduce repetitive configuration work."
+  },
+  "assetConfiguration": {
+    "title": "Asset Configuration",
+    "description": "Configure asset behavior, metadata, and mappings.",
+    "body": "Manage asset-specific rules and associations to ensure consistent configuration outcomes."
+  },
+  "application": {
+    "title": "Application",
+    "description": "Review application-level options and operational settings."
+  },
+  "security": {
+    "title": "Security",
+    "description": "Configure access policies and security-related settings.",
+    "body": "Use this area to manage protections, permissions, and related governance controls."
+  },
+  "logOut": {
+    "title": "Log Out",
+    "description": "Sign out from the current session.",
+    "body": "You can implement sign-out flow here, such as token cleanup and redirect to an authentication page."
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you were looking for does not exist.",
+    "body": "Use the left navigation panel to return to a valid section."
+  }
+}

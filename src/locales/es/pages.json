@@ -1,0 +1,46 @@
+{
+  "dashboard": {
+    "title": "Panel",
+    "description": "Resumen de las métricas y el estado más relevantes.",
+    "body": "El panel le ofrece un punto de partida para la salud general del sistema, resúmenes de uso y actividad reciente."
+  },
+  "catalogs": {
+    "title": "Catálogos",
+    "description": "Explore y administre los catálogos disponibles para la configuración.",
+    "body": "Use los catálogos para revisar entidades disponibles, organizar fuentes y definir estructuras reutilizables."
+  },
+  "parameters": {
+    "title": "Parámetros",
+    "description": "Defina y mantenga los parámetros de configuración.",
+    "body": "Los parámetros controlan el comportamiento del sistema y los valores predeterminados en los módulos configurados."
+  },
+  "templates": {
+    "title": "Plantillas",
+    "description": "Cree y administre plantillas de configuración reutilizables.",
+    "body": "Las plantillas ayudan a estandarizar patrones de configuración y reducir trabajo repetitivo."
+  },
+  "assetConfiguration": {
+    "title": "Configuración de activos",
+    "description": "Configure el comportamiento, los metadatos y las asignaciones de los activos.",
+    "body": "Administre reglas y asociaciones específicas de activos para lograr resultados de configuración coherentes."
+  },
+  "application": {
+    "title": "Aplicación",
+    "description": "Revise las opciones a nivel de aplicación y la configuración operativa."
+  },
+  "security": {
+    "title": "Seguridad",
+    "description": "Configure políticas de acceso y ajustes relacionados con la seguridad.",
+    "body": "Use esta área para administrar protecciones, permisos y controles de gobernanza relacionados."
+  },
+  "logOut": {
+    "title": "Cerrar sesión",
+    "description": "Cierre la sesión actual.",
+    "body": "Aquí puede implementar el flujo de cierre de sesión, por ejemplo limpiar tokens y redirigir a la página de autenticación."
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "La página que busca no existe.",
+    "body": "Use el panel de navegación izquierdo para volver a una sección válida."
+  }
+}

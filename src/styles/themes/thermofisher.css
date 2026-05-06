@@ -1,25 +1,39 @@
 :root[data-theme="thermofisher"][data-mode="light"] {
-  --color-bg: 253 242 248;
-  --color-surface: 255 241 242;
-  --color-neutral: 244 215 228;
-  --color-text: 74 4 78;
-  --color-primary: 236 72 153;
-  --color-secondary: 219 39 119;
-  --color-success: 22 163 74;
-  --color-danger: 190 24 93;
-  --color-warning: 217 119 6;
-  --color-info: 14 165 233;
+  /* Base surfaces */
+  --color-bg: 240 249 255;        /* very light blue */
+  --color-surface: 224 242 254;   /* surface cards */
+  
+  /* Neutrals */
+  --color-neutral: 203 213 225;   /* blue-gray */
+  --color-text: 15 23 42;         /* slate-900 */
+
+  /* Brand */
+  --color-primary: 37 99 235;     /* blue-600 */
+  --color-secondary: 29 78 216;   /* blue-700 */
+
+  /* Semantics */
+  --color-success: 22 163 74;     /* green-600 */
+  --color-danger: 220 38 38;      /* red-600 */
+  --color-warning: 217 119 6;     /* amber-600 */
+  --color-info: 14 165 233;       /* sky-500 */
 }
 
 :root[data-theme="thermofisher"][data-mode="dark"] {
-  --color-bg: 42 16 32;
-  --color-surface: 59 15 42;
-  --color-neutral: 103 63 88;
-  --color-text: 252 231 243;
-  --color-primary: 244 114 182;
-  --color-secondary: 236 72 153;
-  --color-success: 74 222 128;
-  --color-danger: 244 114 182;
-  --color-warning: 251 191 36;
-  --color-info: 56 189 248;
+  /* Base surfaces */
+  --color-bg: 2 6 23;             /* slate-950 */
+  --color-surface: 15 23 42;      /* slate-900 */
+
+  /* Neutrals */
+  --color-neutral: 51 65 85;      /* slate-700 */
+  --color-text: 226 232 240;      /* slate-200 */
+
+  /* Brand */
+  --color-primary: 96 165 250;    /* blue-400 */
+  --color-secondary: 59 130 246;  /* blue-500 */
+
+  /* Semantics */
+  --color-success: 74 222 128;    /* green-400 */
+  --color-danger: 248 113 113;    /* red-400 */
+  --color-warning: 251 191 36;    /* amber-400 */
+  --color-info: 56 189 248;       /* sky-400 */
 }

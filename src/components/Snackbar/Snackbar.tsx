@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "./Snackbar.scss";
 
 type SnackbarVariant = "info" | "success" | "warning" | "danger";
@@ -18,6 +19,8 @@ export default function Snackbar({
   autoHideMs = 3000,
   onClose,
 }: SnackbarProps) {
+  const { t } = useTranslation("common");
+
   useEffect(() => {
     if (!open || autoHideMs <= 0) {
       return undefined;
@@ -35,7 +38,7 @@ export default function Snackbar({
     <div className={`snackbar snackbar--${variant}`} role="status" aria-live="polite">
       <span>{message}</span>
       <button type="button" className="snackbar__close" onClick={onClose}>
-        Dismiss
+        {t("actions.dismiss")}
       </button>
     </div>
   );

@@ -1,0 +1,15 @@
+{
+  "brand": {
+    "appName": "Data Configuration Hub"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "catalogs": "Catalogs",
+    "parameters": "Parameters",
+    "templates": "Templates",
+    "assetConfiguration": "Asset Configuration",
+    "application": "Application",
+    "security": "Security",
+    "logOut": "Log Out"
+  }
+}

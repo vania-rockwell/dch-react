@@ -1,10 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 @import "./themes/thermofisher.css";
 @import "./themes/kalypso.css";
 
 :root {
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: "Barlow", system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: "Barlow", system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
   --space-0: 0rem;
   --space-1: 0.25rem;

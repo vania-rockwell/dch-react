@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import AppHeader from "./AppHeader";
 import AppSidebar from "./AppSidebar";
 import "./layout.scss";
 
@@ -9,13 +8,11 @@ export default function AppShell() {
 
   return (
     <div className="app-shell">
-      <AppHeader
-        sidebarCollapsed={sidebarCollapsed}
-        onToggleSidebar={() => setSidebarCollapsed((value) => !value)}
-      />
-
       <div className="app-shell__body">
-        <AppSidebar collapsed={sidebarCollapsed} />
+        <AppSidebar
+          collapsed={sidebarCollapsed}
+          onToggleCollapsed={() => setSidebarCollapsed((value) => !value)}
+        />
         <main className="app-shell__main">
           <Outlet />
         </main>

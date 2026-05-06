@@ -62,13 +62,16 @@ src/
 │   │   └── layout.scss
 │   └── theme/           # Theme context provider
 │       └── ThemeProvider.tsx
-├── pages/               # Route-level page components (one per route)
-│   ├── DashboardPage.tsx
-│   ├── ReportsPage.tsx
-│   └── ...
-├── locales/             # i18n translation files
-│   ├── en/translation.json
-│   ├── es/translation.json
+│   └── {feature}/       # Route UIs live next to domain code (see router imports)
+├── locales/             # i18n namespaces (one JSON file per domain per language)
+│   ├── en/
+│   │   ├── common.json
+│   │   ├── layout.json
+│   │   └── pages.json
+│   ├── es/
+│   │   ├── common.json
+│   │   ├── layout.json
+│   │   └── pages.json
 │   └── i18n.ts
 ├── services/            # API clients and external service integrations
 ├── utils/               # Pure helper/utility functions
@@ -90,7 +93,7 @@ src/
 |---|---|
 | Reusable across pages (Button, Table, Modal) | `src/components/ComponentName/` |
 | Domain-specific logic + UI (auth, layout, theme) | `src/features/featureName/` |
-| A routed page view | `src/pages/` |
+| A routed screen for a domain | `src/features/{featureName}/` |
 | Shared utility / helper | `src/utils/` |
 | API integration | `src/services/` |
 
@@ -100,18 +103,27 @@ src/
 
 - All routes are defined in `src/router.tsx` using `createBrowserRouter` from `react-router-dom`.
 - The root route renders `<App />`, which renders the persistent shell (header + sidebar). Child routes render inside `<Outlet />` in the main content area.
-- To add a new route: create a page component in `src/pages/`, import it in `router.tsx`, and add a `{ path, element }` entry under the root `children` array.
+- To add a new route: add a component under `src/features/{feature}/`, register strings under `locales/*/pages.json`, import it in `router.tsx`, and add a `{ path, element }` entry under the root `children` array.
 - Also add a matching entry in `src/features/layout/layout.config.ts` so the sidebar navigation stays in sync.
 
 ---
 
 ### Locales
 
-- Internationalization is handled by `i18next` + `react-i18next`.
-- Configuration lives in `src/locales/i18n.ts`. The default language is `es` with `en` as the fallback.
-- Translation files are JSON dictionaries at `src/locales/{lang}/translation.json`.
-- To add a new language: create a `src/locales/{lang}/translation.json` file, import it in `i18n.ts`, and register it under `resources`.
-- Use the `useTranslation()` hook in components to access translated strings. Never hard-code user-facing text.
+- Internationalization uses `i18next` + `react-i18next`.
+- Configuration is in `src/locales/i18n.ts`. Default language is `en` with `es` as fallback. The active locale is persisted under the `dch.locale` key in `localStorage`.
+- **Namespaces** keep translations scalable: bundle keys by concern, lazy-load later if needed.
+
+| Namespace | JSON | Typical keys |
+|-----------|------|---------------|
+| `common` | `common.json` | Shared labels, buttons, aria text, theme/language option labels (`actions.*`, `aria.*`, `fields.*`). |
+| `layout` | `layout.json` | App chrome: `brand.appName`, sidebar `nav.*` (must stay aligned with `layout.config.ts` `labelKey` values). |
+| `pages` | `pages.json` | Screen copy grouped by route: `dashboard.title`, `catalogs.body`, etc. Mirror feature folder naming where it helps (`assetConfiguration`, `notFound`). |
+
+- In components: `useTranslation("pages")`, `useTranslation("layout")`, or `useTranslation("common")`, then dot keys (`t("dashboard.title")`).
+- **`document.documentElement.lang`** and **`document.title`** are synced when the locale or translations change (via `brand.appName` in `layout`).
+- To add a language: duplicate `src/locales/en/*.json` into `src/locales/{lang}/`, import those files in `i18n.ts`, and extend the `resources` map and language selector options in Application settings (`common.languageOption`).
+- Avoid hard-coded user-facing strings outside tests and Storybook stubs.
 
 ---
 
