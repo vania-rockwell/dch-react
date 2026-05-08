@@ -1,0 +1,54 @@
+{
+  "id": "1",
+  "label": "Enterprise",
+  "children": [
+    {
+      "id": "2",
+      "label": "Site A",
+      "children": [
+        {
+          "id": "4",
+          "label": "Area X",
+          "children": [
+            {
+              "id": "6",
+              "label": "Line 1",
+              "children": []
+            },
+            {
+              "id": "7",
+              "label": "Line 2",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "5",
+          "label": "Area Y",
+          "children": [
+            {
+              "id": "8",
+              "label": "Line 11",
+              "children": []
+            },
+            {
+              "id": "9",
+              "label": "Line 12",
+              "children": []
+            },
+            {
+              "id": "10",
+              "label": "Line 13",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "label": "Site B",
+      "children": []
+    }
+  ]
+}

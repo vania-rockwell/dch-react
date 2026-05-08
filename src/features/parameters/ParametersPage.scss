@@ -1,0 +1,93 @@
+// Fills viewport under app chrome: global header token + main vertical padding
+.parameters-page {
+  min-height: calc(
+    100vh - var(--space-header-height) - 2 * var(--space-6)
+  );
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  .page-section {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.parameters-explorer {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(14rem, 20rem) 1fr;
+  gap: var(--space-3);
+  align-items: stretch;
+
+  @media (max-width: 56rem) {
+    grid-template-columns: 1fr;
+  }
+
+  &__tree {
+    border: 1px solid rgb(var(--color-neutral) / 0.9);
+    border-radius: var(--radius-lg);
+    background-color: rgb(var(--color-surface));
+    padding: var(--space-3) 0;
+    overflow: auto;
+    min-height: 0;
+  }
+
+  &__detail {
+    padding: var(--space-6);
+    overflow: auto;
+    min-height: 0;
+  }
+}
+
+.parameters-detail {
+  &__placeholder {
+    margin: 0;
+    opacity: 0.72;
+    line-height: 1.6;
+  }
+
+  &__heading {
+    margin: 0 0 var(--space-5);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-2) var(--space-8);
+    align-items: baseline;
+
+    dt {
+      margin: 0;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      opacity: 0.75;
+    }
+
+    dd {
+      margin: 0;
+      font-size: 0.9375rem;
+    }
+  }
+
+  &__code {
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    word-break: break-all;
+  }
+}

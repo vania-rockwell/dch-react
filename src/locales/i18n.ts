@@ -10,11 +10,17 @@ import pagesEs from "./es/pages.json";
 
 export const LOCALE_STORAGE_KEY = "dch.locale";
 
+const SUPPORTED_LANGUAGES = ["en", "es"] as const;
+type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
+
 function getInitialLanguage(): string {
   if (typeof window === "undefined") {
     return "en";
   }
-  return window.localStorage.getItem(LOCALE_STORAGE_KEY) ?? "en";
+  const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
+  return (SUPPORTED_LANGUAGES as readonly string[]).includes(stored ?? "")
+    ? (stored as SupportedLanguage)
+    : "en";
 }
 
 function syncDocumentFromI18n(): void {
@@ -38,7 +44,9 @@ i18n.use(initReactI18next).init(
   {
     resources,
     lng: getInitialLanguage(),
-    fallbackLng: "es",
+    supportedLngs: [...SUPPORTED_LANGUAGES],
+    load: "languageOnly",
+    fallbackLng: "en",
     defaultNS: "common",
     ns: ["common", "layout", "pages"],
     interpolation: { escapeValue: false },

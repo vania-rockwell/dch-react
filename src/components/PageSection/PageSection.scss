@@ -14,16 +14,4 @@
       opacity: 0.8;
     }
   }
-
-  &__content {
-    border: 1px solid rgb(var(--color-neutral) / 0.9);
-    border-radius: var(--radius-lg);
-    background-color: rgb(var(--color-surface));
-    padding: var(--space-5);
-
-    p {
-      margin: 0;
-      line-height: 1.65;
-    }
-  }
 }

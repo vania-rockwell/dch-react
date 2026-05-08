@@ -17,8 +17,8 @@
 .app-sidebar {
   width: 17rem;
   overflow-x: hidden;
-  border-right: 1px solid rgb(var(--color-neutral) / 0.9);
-  background-color: rgb(var(--color-surface));
+  border-right: 1px solid rgb(255 255 255 / 0.14);
+  background-color: rgb(var(--color-primary));
   padding: var(--space-4);
   transition: width 160ms ease;
 
@@ -56,13 +56,13 @@
   border: 0;
   border-radius: var(--radius-md);
   background: transparent;
-  color: rgb(var(--color-text));
+  color: rgb(255 255 255 / 0.95);
   cursor: pointer;
   padding-inline: var(--space-3);
   font: inherit;
 
   &:hover {
-    background-color: rgb(var(--color-neutral) / 0.45);
+    background-color: rgb(255 255 255 / 0.12);
   }
 }
 
@@ -78,19 +78,23 @@
   border-radius: var(--radius-md);
   padding-inline: var(--space-3);
   text-decoration: none;
-  color: rgb(var(--color-text));
+  color: rgb(255 255 255 / 0.92);
 
   &:hover {
-    background-color: rgb(var(--color-neutral) / 0.45);
+    background-color: rgb(255 255 255 / 0.12);
   }
 
   &.is-active {
-    background-color: rgb(var(--color-primary) / 0.18);
+    background-color: rgb(255 255 255 / 0.95);
     color: rgb(var(--color-primary));
     font-weight: 600;
 
+    &:hover {
+      background-color: rgb(255 255 255);
+    }
+
     .sidebar-link__icon {
-      background-color: transparent;
+      color: rgb(var(--color-primary));
     }
   }
 
@@ -101,7 +105,8 @@
     width: 2rem;
     height: 2rem;
     border-radius: 9999px;
-    background-color: rgb(var(--color-primary) / 0.16);
+    background-color: rgb(255 255 255 / 0.18);
+    color: rgb(255 255 255 / 0.95);
     font-size: 0.75rem;
     font-weight: 700;
   }

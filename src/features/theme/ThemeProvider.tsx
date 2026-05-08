@@ -1,4 +1,9 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useLayoutEffect,
+  useState,
+} from "react";
 import type { ReactNode } from "react";
 
 type ThemeContextType = {
@@ -14,11 +19,58 @@ type ThemeProviderProps = {
 
 const ThemeContext = createContext<ThemeContextType>(null!);
 
-export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [theme, setTheme] = useState("kalypso");
-  const [mode, setMode] = useState<"light" | "dark">("light");
+const THEME_STORAGE_KEY = "dch.theme";
+const MODE_STORAGE_KEY = "dch.mode";
+const VALID_THEMES = new Set(["kalypso", "thermofisher"]);
 
-  useEffect(() => {
+function readStoredTheme(): string {
+  try {
+    const value = localStorage.getItem(THEME_STORAGE_KEY);
+    if (value && VALID_THEMES.has(value)) {
+      return value;
+    }
+  } catch {
+    /* ignore */
+  }
+  return "kalypso";
+}
+
+function readStoredMode(): "light" | "dark" {
+  try {
+    const value = localStorage.getItem(MODE_STORAGE_KEY);
+    if (value === "light" || value === "dark") {
+      return value;
+    }
+  } catch {
+    /* ignore */
+  }
+  return "light";
+}
+
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
+  const [theme, setThemeState] = useState(readStoredTheme);
+  const [mode, setModeState] = useState(readStoredMode);
+
+  const setTheme = (next: string) => {
+    const value = VALID_THEMES.has(next) ? next : "kalypso";
+    setThemeState(value);
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, value);
+    } catch {
+      /* ignore */
+    }
+  };
+
+  const setMode = (next: "light" | "dark") => {
+    setModeState(next);
+    try {
+      localStorage.setItem(MODE_STORAGE_KEY, next);
+    } catch {
+      /* ignore */
+    }
+  };
+
+  useLayoutEffect(() => {
     const root = document.documentElement;
     root.dataset.theme = theme;
     root.dataset.mode = mode;

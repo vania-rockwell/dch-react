@@ -12,7 +12,14 @@
   "parameters": {
     "title": "Parámetros",
     "description": "Defina y mantenga los parámetros de configuración.",
-    "body": "Los parámetros controlan el comportamiento del sistema y los valores predeterminados en los módulos configurados."
+    "body": "Los parámetros controlan el comportamiento del sistema y los valores predeterminados en los módulos configurados.",
+    "loading": "Cargando parámetros…",
+    "loadError": "No se pudieron cargar los parámetros.",
+    "detailPlaceholder": "Seleccione un elemento del árbol para ver los detalles aquí.",
+    "detailPanel": "Detalles",
+    "fieldId": "Identificador",
+    "fieldValue": "Valor",
+    "fieldSubitems": "Subelementos"
   },
   "templates": {
     "title": "Plantillas",

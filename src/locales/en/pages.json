@@ -12,7 +12,14 @@
   "parameters": {
     "title": "Parameters",
     "description": "Define and maintain configuration parameters.",
-    "body": "Parameters control system behavior and defaults across configured modules."
+    "body": "Parameters control system behavior and defaults across configured modules.",
+    "loading": "Loading parameters…",
+    "loadError": "Could not load parameters.",
+    "detailPlaceholder": "Select an item in the tree to view details here.",
+    "detailPanel": "Details",
+    "fieldId": "Identifier",
+    "fieldValue": "Value",
+    "fieldSubitems": "Sub-items"
   },
   "templates": {
     "title": "Templates",
