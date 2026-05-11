@@ -1,43 +1,164 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Button } from "../../components/Button/Button";
 import PageSection from "../../components/PageSection/PageSection";
+import Table from "../../components/Table/Table";
+import { Tab, TabList, TabPanel, Tabs } from "../../components/Tabs/Tabs";
 import { TreeView } from "../../components/Tree/TreeView";
 import { formatTreeNodeValue } from "../../components/Tree/formatTreeNodeValue";
 import type { TreeNode } from "../../components/Tree/types";
 import { fetchParameterTree } from "../../services/parametersTreeService";
 import "./ParametersPage.scss";
 
+const TAB = {
+  general: "general",
+  connectivity: "connectivity",
+  parameters: "parameters",
+  applications: "applications",
+  deployment: "deployment",
+} as const;
+
 function ParametersDetailPanel({ node, emptyLabel }: { node: TreeNode | null; emptyLabel: string }) {
   const { t } = useTranslation("pages");
 
-  if (node === null) {
-    return <p className="parameters-detail__placeholder">{emptyLabel}</p>;
-  }
+  const connectivityColumns = useMemo(
+    () =>
+      [
+        { key: "id" as const, header: t("parameters.connectivityColId") },
+        { key: "endpoint" as const, header: t("parameters.connectivityColEndpoint") },
+        { key: "status" as const, header: t("parameters.connectivityColStatus") },
+      ] as const,
+    [t]
+  );
 
-  const childCount = node.children?.length ?? 0;
+  const connectivityRows: Record<string, unknown>[] = useMemo(
+    () => [
+      {
+        id: "primary",
+        endpoint: "https://gateway.internal.example/api",
+        status: t("parameters.connectivityStatusOk"),
+      },
+      {
+        id: "fallback",
+        endpoint: "https://gateway-dr.internal.example/api",
+        status: t("parameters.connectivityStatusStandby"),
+      },
+    ],
+    [t]
+  );
+
+  const hasNode = node !== null;
+  const childCount = node?.children?.length ?? 0;
   const hasChildren = childCount > 0;
-  const hasValue = node.value !== undefined && node.value !== null;
+  const hasValue =
+    hasNode && node.value !== undefined && node.value !== null;
 
   return (
-    <>
-      <h2 className="parameters-detail__heading">{node.label}</h2>
-      <dl className="parameters-detail__dl">
-        <dt>{t("parameters.fieldId")}</dt>
-        <dd className="parameters-detail__code">{node.id}</dd>
-        {hasValue ? (
+    <Tabs
+      key={node?.id ?? "__none__"}
+      defaultValue={TAB.general}
+      className="parameters-detail-tabs"
+    >
+      <TabList aria-label={t("parameters.detailTabsLabel")}>
+        <Tab value={TAB.general}>{t("parameters.tabs.general")}</Tab>
+        <Tab value={TAB.connectivity}>{t("parameters.tabs.connectivity")}</Tab>
+        <Tab value={TAB.parameters}>{t("parameters.tabs.parameters")}</Tab>
+        <Tab value={TAB.applications}>{t("parameters.tabs.applications")}</Tab>
+        <Tab value={TAB.deployment}>{t("parameters.tabs.deployment")}</Tab>
+      </TabList>
+
+      <TabPanel value={TAB.general}>
+        {hasNode ? (
           <>
-            <dt>{t("parameters.fieldValue")}</dt>
-            <dd>{formatTreeNodeValue(node.value)}</dd>
+            <h2 className="parameters-detail__heading">{node.label}</h2>
+            <dl className="parameters-detail__dl">
+              <dt>{t("parameters.fieldId")}</dt>
+              <dd className="parameters-detail__code">{node.id}</dd>
+              {hasValue ? (
+                <>
+                  <dt>{t("parameters.fieldValue")}</dt>
+                  <dd>{formatTreeNodeValue(node.value)}</dd>
+                </>
+              ) : null}
+              {hasChildren ? (
+                <>
+                  <dt>{t("parameters.fieldSubitems")}</dt>
+                  <dd>{childCount}</dd>
+                </>
+              ) : null}
+            </dl>
           </>
-        ) : null}
-        {hasChildren ? (
-          <>
-            <dt>{t("parameters.fieldSubitems")}</dt>
-            <dd>{childCount}</dd>
-          </>
-        ) : null}
-      </dl>
-    </>
+        ) : (
+          <p className="parameters-detail__placeholder">{emptyLabel}</p>
+        )}
+      </TabPanel>
+
+      <TabPanel value={TAB.connectivity}>
+        <p className="parameters-detail__tab-lead">{t("parameters.tabConnectivityLead")}</p>
+        <Table
+          columns={[...connectivityColumns]}
+          rows={connectivityRows}
+          rowKey="id"
+          emptyLabel={t("parameters.tabTableEmpty")}
+        />
+      </TabPanel>
+
+      <TabPanel value={TAB.parameters}>
+        {!hasNode ? (
+          <p className="parameters-detail__tab-muted">{emptyLabel}</p>
+        ) : hasChildren ? (
+          <div className="parameters-detail__nested-tree">
+            <TreeView key={node.id} data={node.children!} defaultExpandedIds={[]} />
+          </div>
+        ) : (
+          <p className="parameters-detail__tab-muted">{t("parameters.tabParametersEmpty")}</p>
+        )}
+      </TabPanel>
+
+      <TabPanel value={TAB.applications}>
+        {!hasNode ? (
+          <p className="parameters-detail__tab-muted">{emptyLabel}</p>
+        ) : (
+          <form className="parameters-detail-form" onSubmit={(e) => e.preventDefault()}>
+            <p className="parameters-detail__tab-lead">{t("parameters.tabApplicationsLead")}</p>
+            <label className="parameters-detail-form__field">
+              <span className="parameters-detail-form__label">{t("parameters.detailFormAppName")}</span>
+              <input
+                className="parameters-detail-form__input"
+                type="text"
+                defaultValue={node.label}
+                readOnly
+                aria-readonly="true"
+              />
+            </label>
+            <label className="parameters-detail-form__field">
+              <span className="parameters-detail-form__label">{t("parameters.detailFormAppVersion")}</span>
+              <input
+                className="parameters-detail-form__input"
+                type="text"
+                defaultValue="1.0.0"
+                readOnly
+                aria-readonly="true"
+              />
+            </label>
+            <div className="parameters-detail-form__actions">
+              <Button type="submit" variant="secondary" disabled>
+                {t("parameters.detailFormSave")}
+              </Button>
+            </div>
+          </form>
+        )}
+      </TabPanel>
+
+      <TabPanel value={TAB.deployment}>
+        <p className="parameters-detail__tab-lead">{t("parameters.tabDeploymentLead")}</p>
+        <ul className="parameters-detail__deployment-list">
+          <li>{t("parameters.tabDeploymentItem1")}</li>
+          <li>{t("parameters.tabDeploymentItem2")}</li>
+          <li>{t("parameters.tabDeploymentItem3")}</li>
+        </ul>
+      </TabPanel>
+    </Tabs>
   );
 }
 
