@@ -1,0 +1,23 @@
+{
+  "actions": {
+    "close": "Chiudi",
+    "dismiss": "Scarta",
+    "darkMode": "Modalità scura",
+    "lightMode": "Modalità chiara"
+  },
+  "aria": {
+    "toggleColorMode": "Attiva/disattiva modalità colore",
+    "expandMenu": "Espandi menu",
+    "collapseMenu": "Comprimi menu",
+    "mainNavigation": "Navigazione principale"
+  },
+  "fields": {
+    "theme": "Tema",
+    "language": "Lingua"
+  },
+  "languageOption": {
+    "en": "English",
+    "es": "Español",
+    "it": "Italiano"
+  }
+}

@@ -6,10 +6,22 @@
     "dashboard": "Panel",
     "catalogs": "Catálogos",
     "parameters": "Parámetros",
+    "parametersList": "Lista de parámetros",
+    "parametersGroups": "Grupos de parámetros",
     "templates": "Plantillas",
+    "templatesLibrary": "Biblioteca de plantillas",
+    "templatesCustom": "Plantillas personalizadas",
     "assetConfiguration": "Configuración de activos",
     "application": "Aplicación",
+    "applicationInfo": "Información de aplicación",
+    "applicationModules": "Módulos",
+    "modulesIntegration": "Integración",
+    "modulesReporting": "Informes",
     "security": "Seguridad",
-    "logOut": "Cerrar sesión"
+    "securityUsers": "Usuarios",
+    "securityPermissions": "Permisos",
+    "logOut": "Cerrar sesión",
+    "user": "Usuario",
+    "version": "Versión"
   }
 }

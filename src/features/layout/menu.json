@@ -1,0 +1,117 @@
+{
+  "items": [
+    {
+      "id": "dashboard",
+      "path": "/",
+      "labelKey": "nav.dashboard",
+      "icon": "Home",
+      "end": true
+    },
+    {
+      "id": "catalogs",
+      "path": "/catalogs",
+      "labelKey": "nav.catalogs",
+      "icon": "BookOpen"
+    },
+    {
+      "id": "parameters",
+      "path": "/parameters",
+      "labelKey": "nav.parameters",
+      "icon": "SlidersHorizontal",
+      "children": [
+        {
+          "id": "parameters-list",
+          "path": "/parameters",
+          "labelKey": "nav.parametersList",
+          "level": 2
+        },
+        {
+          "id": "parameters-groups",
+          "path": "/parameters/groups",
+          "labelKey": "nav.parametersGroups",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "id": "templates",
+      "path": "/templates",
+      "labelKey": "nav.templates",
+      "icon": "FileText",
+      "children": [
+        {
+          "id": "templates-library",
+          "path": "/templates",
+          "labelKey": "nav.templatesLibrary",
+          "level": 2
+        },
+        {
+          "id": "templates-custom",
+          "path": "/templates/custom",
+          "labelKey": "nav.templatesCustom",
+          "level": 2
+        }
+      ]
+    },
+    {
+      "id": "asset-configuration",
+      "path": "/asset-configuration",
+      "labelKey": "nav.assetConfiguration",
+      "icon": "Wrench"
+    },
+    {
+      "id": "application",
+      "path": "/application",
+      "labelKey": "nav.application",
+      "icon": "Settings",
+      "children": [
+        {
+          "id": "application-info",
+          "path": "/application",
+          "labelKey": "nav.applicationInfo",
+          "level": 2
+        },
+        {
+          "id": "application-modules",
+          "path": "/application/modules",
+          "labelKey": "nav.applicationModules",
+          "level": 2,
+          "children": [
+            {
+              "id": "modules-integration",
+              "path": "/application/modules/integration",
+              "labelKey": "nav.modulesIntegration",
+              "level": 3
+            },
+            {
+              "id": "modules-reporting",
+              "path": "/application/modules/reporting",
+              "labelKey": "nav.modulesReporting",
+              "level": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "path": "/security",
+      "labelKey": "nav.security",
+      "icon": "ShieldCheck",
+      "children": [
+        {
+          "id": "security-users",
+          "path": "/security",
+          "labelKey": "nav.securityUsers",
+          "level": 2
+        },
+        {
+          "id": "security-permissions",
+          "path": "/security/permissions",
+          "labelKey": "nav.securityPermissions",
+          "level": 2
+        }
+      ]
+    }
+  ]
+}

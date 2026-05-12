@@ -6,10 +6,22 @@
     "dashboard": "Dashboard",
     "catalogs": "Catalogs",
     "parameters": "Parameters",
+    "parametersList": "Parameters List",
+    "parametersGroups": "Parameter Groups",
     "templates": "Templates",
+    "templatesLibrary": "Template Library",
+    "templatesCustom": "Custom Templates",
     "assetConfiguration": "Asset Configuration",
     "application": "Application",
+    "applicationInfo": "Application Info",
+    "applicationModules": "Modules",
+    "modulesIntegration": "Integration",
+    "modulesReporting": "Reporting",
     "security": "Security",
-    "logOut": "Log Out"
+    "securityUsers": "Users",
+    "securityPermissions": "Permissions",
+    "logOut": "Log Out",
+    "user": "User",
+    "version": "Version"
   }
 }

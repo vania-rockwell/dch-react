@@ -1,0 +1,27 @@
+{
+  "brand": {
+    "appName": "Hub Configurazione Dati"
+  },
+  "nav": {
+    "dashboard": "Pannello di controllo",
+    "catalogs": "Cataloghi",
+    "parameters": "Parametri",
+    "parametersList": "Elenco parametri",
+    "parametersGroups": "Gruppi di parametri",
+    "templates": "Modelli",
+    "templatesLibrary": "Libreria di modelli",
+    "templatesCustom": "Modelli personalizzati",
+    "assetConfiguration": "Configurazione Asset",
+    "application": "Applicazione",
+    "applicationInfo": "Informazioni applicazione",
+    "applicationModules": "Moduli",
+    "modulesIntegration": "Integrazione",
+    "modulesReporting": "Report",
+    "security": "Sicurezza",
+    "securityUsers": "Utenti",
+    "securityPermissions": "Autorizzazioni",
+    "logOut": "Esci",
+    "user": "Utente",
+    "version": "Versione"
+  }
+}

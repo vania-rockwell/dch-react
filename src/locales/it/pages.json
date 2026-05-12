@@ -1,0 +1,65 @@
+{
+  "dashboard": {
+    "title": "Pannello di controllo"
+  },
+  "catalogs": {
+    "title": "Cataloghi"
+  },
+  "parameters": {
+    "title": "Parametri"
+  },
+  "templates": {
+    "title": "Modelli"
+  },
+  "assetConfiguration": {
+    "title": "Configurazione Asset"
+  },
+  "application": {
+    "title": "Applicazione"
+  },
+  "parametersGroups": {
+    "title": "Gruppi di parametri",
+    "description": "Gestisci insiemi di parametri raggruppati e la loro organizzazione.",
+    "body": "Usa questa sezione per consultare e mantenere strutture di parametri raggruppati."
+  },
+  "templatesCustom": {
+    "title": "Modelli personalizzati",
+    "description": "Crea e gestisci modelli personalizzati.",
+    "body": "Definisci modelli personalizzati per scenari di configurazione specifici."
+  },
+  "applicationModules": {
+    "title": "Moduli applicazione",
+    "description": "Esplora e configura i moduli applicativi.",
+    "body": "Gestisci impostazioni a livello di modulo e relazioni tra moduli."
+  },
+  "modulesIntegration": {
+    "title": "Modulo integrazione",
+    "description": "Configura le funzionalita del modulo relative all'integrazione.",
+    "body": "Usa questa pagina per gestire endpoint di integrazione e impostazioni modulo."
+  },
+  "modulesReporting": {
+    "title": "Modulo report",
+    "description": "Configura le funzionalita del modulo relative alla reportistica.",
+    "body": "Usa questa pagina per gestire comportamento e output dei report."
+  },
+  "securityPermissions": {
+    "title": "Permessi di sicurezza",
+    "description": "Gestisci permessi per ruolo e regole di accesso.",
+    "body": "Configura qui assegnazioni permessi e regole di autorizzazione."
+  },
+  "security": {
+    "title": "Sicurezza"
+  },
+  "user": {
+    "title": "Utente",
+    "description": "Gestisci il tuo profilo e le preferenze personali.",
+    "body": "Aggiorna le informazioni utente e consulta le impostazioni account da questa sezione."
+  },
+  "logOut": {
+    "title": "Esci"
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "message": "La pagina che stai cercando non esiste"
+  }
+}

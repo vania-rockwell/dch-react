@@ -59,10 +59,45 @@
     "title": "Aplicación",
     "description": "Revise las opciones a nivel de aplicación y la configuración operativa."
   },
+  "parametersGroups": {
+    "title": "Grupos de parámetros",
+    "description": "Administre conjuntos de parámetros agrupados y su organización.",
+    "body": "Use esta sección para explorar y mantener estructuras agrupadas de parámetros."
+  },
+  "templatesCustom": {
+    "title": "Plantillas personalizadas",
+    "description": "Cree y administre plantillas personalizadas.",
+    "body": "Defina plantillas personalizadas para escenarios específicos de configuración."
+  },
+  "applicationModules": {
+    "title": "Módulos de aplicación",
+    "description": "Explore y configure los módulos de la aplicación.",
+    "body": "Administre la configuración a nivel de módulo y sus relaciones."
+  },
+  "modulesIntegration": {
+    "title": "Módulo de integración",
+    "description": "Configure capacidades del módulo relacionadas con integración.",
+    "body": "Use esta página para administrar endpoints de integración y configuración del módulo."
+  },
+  "modulesReporting": {
+    "title": "Módulo de informes",
+    "description": "Configure capacidades del módulo relacionadas con reportes.",
+    "body": "Use esta página para administrar el comportamiento y salidas de reportes."
+  },
+  "securityPermissions": {
+    "title": "Permisos de seguridad",
+    "description": "Administre permisos por rol y reglas de acceso.",
+    "body": "Configure aquí asignaciones de permisos y reglas de autorización."
+  },
   "security": {
     "title": "Seguridad",
     "description": "Configure políticas de acceso y ajustes relacionados con la seguridad.",
     "body": "Use esta área para administrar protecciones, permisos y controles de gobernanza relacionados."
+  },
+  "user": {
+    "title": "Usuario",
+    "description": "Administre su perfil y preferencias personales.",
+    "body": "Actualice su información de usuario y revise la configuración de su cuenta desde esta sección."
   },
   "logOut": {
     "title": "Cerrar sesión",

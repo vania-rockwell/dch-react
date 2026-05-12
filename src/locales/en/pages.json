@@ -59,10 +59,45 @@
     "title": "Application",
     "description": "Review application-level options and operational settings."
   },
+  "parametersGroups": {
+    "title": "Parameter Groups",
+    "description": "Manage grouped parameter sets and organization.",
+    "body": "Use this section to browse and maintain grouped parameter structures."
+  },
+  "templatesCustom": {
+    "title": "Custom Templates",
+    "description": "Create and manage custom templates.",
+    "body": "Define custom templates for specific configuration scenarios."
+  },
+  "applicationModules": {
+    "title": "Application Modules",
+    "description": "Explore and configure application modules.",
+    "body": "Manage module-level settings and module relationships."
+  },
+  "modulesIntegration": {
+    "title": "Integration Module",
+    "description": "Configure integration-related module capabilities.",
+    "body": "Use this page to manage integration endpoints and module settings."
+  },
+  "modulesReporting": {
+    "title": "Reporting Module",
+    "description": "Configure reporting-related module capabilities.",
+    "body": "Use this page to manage reporting behavior and outputs."
+  },
+  "securityPermissions": {
+    "title": "Security Permissions",
+    "description": "Manage role permissions and access rules.",
+    "body": "Configure permission assignments and authorization rules here."
+  },
   "security": {
     "title": "Security",
     "description": "Configure access policies and security-related settings.",
     "body": "Use this area to manage protections, permissions, and related governance controls."
+  },
+  "user": {
+    "title": "User",
+    "description": "Manage your profile and personal preferences.",
+    "body": "Update your user information and review account settings from this section."
   },
   "logOut": {
     "title": "Log Out",

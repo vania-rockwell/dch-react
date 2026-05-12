@@ -7,10 +7,13 @@ import pagesEn from "./en/pages.json";
 import commonEs from "./es/common.json";
 import layoutEs from "./es/layout.json";
 import pagesEs from "./es/pages.json";
+import commonIt from "./it/common.json";
+import layoutIt from "./it/layout.json";
+import pagesIt from "./it/pages.json";
 
 export const LOCALE_STORAGE_KEY = "dch.locale";
 
-const SUPPORTED_LANGUAGES = ["en", "es"] as const;
+const SUPPORTED_LANGUAGES = ["en", "es", "it"] as const;
 type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
 function getInitialLanguage(): string {
@@ -31,6 +34,7 @@ function syncDocumentFromI18n(): void {
 const resources = {
   en: { common: commonEn, layout: layoutEn, pages: pagesEn },
   es: { common: commonEs, layout: layoutEs, pages: pagesEs },
+  it: { common: commonIt, layout: layoutIt, pages: pagesIt },
 };
 
 i18n.on("languageChanged", (lng) => {
