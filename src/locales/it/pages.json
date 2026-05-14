@@ -12,12 +12,22 @@
   "parameters": {
     "title": "Parametri",
     "description": "Definisci e gestisci i parametri di configurazione.",
-    "body": "I parametri controllano il comportamento del sistema e i valori predefiniti nei moduli configurati.",
-    "loading": "Caricamento parametri...",
-    "loadError": "Impossibile caricare i parametri.",
+    "body": "I parametri controllano il comportamento del sistema e i valori predefiniti nei moduli configurati."
+  },
+  "templates": {
+    "title": "Modelli",
+    "description": "Crea e gestisci modelli di configurazione riutilizzabili.",
+    "body": "I modelli aiutano a standardizzare i pattern di configurazione e ridurre il lavoro ripetitivo."
+  },
+  "assetConfiguration": {
+    "title": "Configurazione Asset",
+    "description": "Configura comportamento, metadati e mapping degli asset.",
+    "body": "Gestisci regole e associazioni specifiche degli asset per garantire risultati di configurazione coerenti.",
+    "loading": "Caricamento asset...",
+    "loadError": "Impossibile caricare gli asset.",
     "detailPlaceholder": "Seleziona un elemento nell'albero per visualizzare qui i dettagli.",
     "detailPanel": "Dettagli",
-    "detailTabsLabel": "Sezioni dei dettagli del parametro",
+    "detailTabsLabel": "Sezioni dei dettagli dell'asset",
     "tabs": {
       "general": "Generale",
       "connectivity": "Connettivita",
@@ -27,7 +37,7 @@
     },
     "tabConnectivityLead": "Connessioni in uscita e stato di salute per questa selezione (dati di esempio).",
     "tabParametersEmpty": "Questo elemento non ha parametri figli. Seleziona un nodo ramo nell'albero per consultare qui i valori annidati.",
-    "tabApplicationsLead": "Metadati applicativi associati a questo parametro (esempio in sola lettura).",
+    "tabApplicationsLead": "Metadati applicativi associati a questo asset (esempio in sola lettura).",
     "tabDeploymentLead": "Controlli tipici di distribuzione per questa configurazione:",
     "tabDeploymentItem1": "Convalida la configurazione rispetto al profilo dell'ambiente di destinazione.",
     "tabDeploymentItem2": "Esegui test di regressione automatici sui servizi dipendenti.",
@@ -44,16 +54,6 @@
     "fieldId": "Identificatore",
     "fieldValue": "Valore",
     "fieldSubitems": "Sotto-elementi"
-  },
-  "templates": {
-    "title": "Modelli",
-    "description": "Crea e gestisci modelli di configurazione riutilizzabili.",
-    "body": "I modelli aiutano a standardizzare i pattern di configurazione e ridurre il lavoro ripetitivo."
-  },
-  "assetConfiguration": {
-    "title": "Configurazione Asset",
-    "description": "Configura comportamento, metadati e mapping degli asset.",
-    "body": "Gestisci regole e associazioni specifiche degli asset per garantire risultati di configurazione coerenti."
   },
   "application": {
     "title": "Applicazione",

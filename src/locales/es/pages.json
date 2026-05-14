@@ -12,12 +12,22 @@
   "parameters": {
     "title": "Parámetros",
     "description": "Defina y mantenga los parámetros de configuración.",
-    "body": "Los parámetros controlan el comportamiento del sistema y los valores predeterminados en los módulos configurados.",
-    "loading": "Cargando parámetros…",
-    "loadError": "No se pudieron cargar los parámetros.",
+    "body": "Los parámetros controlan el comportamiento del sistema y los valores predeterminados en los módulos configurados."
+  },
+  "templates": {
+    "title": "Plantillas",
+    "description": "Cree y administre plantillas de configuración reutilizables.",
+    "body": "Las plantillas ayudan a estandarizar patrones de configuración y reducir trabajo repetitivo."
+  },
+  "assetConfiguration": {
+    "title": "Configuración de activos",
+    "description": "Configure el comportamiento, los metadatos y las asignaciones de los activos.",
+    "body": "Administre reglas y asociaciones específicas de activos para lograr resultados de configuración coherentes.",
+    "loading": "Cargando activos...",
+    "loadError": "No se pudieron cargar los activos.",
     "detailPlaceholder": "Seleccione un elemento del árbol para ver los detalles aquí.",
     "detailPanel": "Detalles",
-    "detailTabsLabel": "Secciones del detalle del parámetro",
+    "detailTabsLabel": "Secciones del detalle del activo",
     "tabs": {
       "general": "General",
       "connectivity": "Conectividad",
@@ -27,7 +37,7 @@
     },
     "tabConnectivityLead": "Conexiones salientes y estado para esta selección (datos de ejemplo).",
     "tabParametersEmpty": "Este elemento no tiene parámetros hijos. Elija un nodo de rama en el árbol para ver valores anidados aquí.",
-    "tabApplicationsLead": "Metadatos de aplicación asociados a este parámetro (ejemplo de solo lectura).",
+    "tabApplicationsLead": "Metadatos de aplicación asociados a este activo (ejemplo de solo lectura).",
     "tabDeploymentLead": "Comprobaciones típicas de implementación para esta configuración:",
     "tabDeploymentItem1": "Validar la configuración con el perfil del entorno de destino.",
     "tabDeploymentItem2": "Ejecutar pruebas de regresión automatizadas en los servicios dependientes.",
@@ -44,16 +54,6 @@
     "fieldId": "Identificador",
     "fieldValue": "Valor",
     "fieldSubitems": "Subelementos"
-  },
-  "templates": {
-    "title": "Plantillas",
-    "description": "Cree y administre plantillas de configuración reutilizables.",
-    "body": "Las plantillas ayudan a estandarizar patrones de configuración y reducir trabajo repetitivo."
-  },
-  "assetConfiguration": {
-    "title": "Configuración de activos",
-    "description": "Configure el comportamiento, los metadatos y las asignaciones de los activos.",
-    "body": "Administre reglas y asociaciones específicas de activos para lograr resultados de configuración coherentes."
   },
   "application": {
     "title": "Aplicación",

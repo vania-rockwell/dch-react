@@ -12,12 +12,22 @@
   "parameters": {
     "title": "Parameters",
     "description": "Define and maintain configuration parameters.",
-    "body": "Parameters control system behavior and defaults across configured modules.",
-    "loading": "Loading parameters…",
-    "loadError": "Could not load parameters.",
+    "body": "Parameters control system behavior and defaults across configured modules."
+  },
+  "templates": {
+    "title": "Templates",
+    "description": "Create and manage reusable configuration templates.",
+    "body": "Templates help standardize setup patterns and reduce repetitive configuration work."
+  },
+  "assetConfiguration": {
+    "title": "Asset Configuration",
+    "description": "Configure asset behavior, metadata, and mappings.",
+    "body": "Manage asset-specific rules and associations to ensure consistent configuration outcomes.",
+    "loading": "Loading assets...",
+    "loadError": "Could not load assets.",
     "detailPlaceholder": "Select an item in the tree to view details here.",
     "detailPanel": "Details",
-    "detailTabsLabel": "Parameter detail sections",
+    "detailTabsLabel": "Asset detail sections",
     "tabs": {
       "general": "General",
       "connectivity": "Connectivity",
@@ -27,7 +37,7 @@
     },
     "tabConnectivityLead": "Outbound connections and health for this selection (sample data).",
     "tabParametersEmpty": "This item has no child parameters. Choose a branch node in the tree to browse nested values here.",
-    "tabApplicationsLead": "Application metadata associated with this parameter (read-only sample).",
+    "tabApplicationsLead": "Application metadata associated with this asset (read-only sample).",
     "tabDeploymentLead": "Typical deployment checks for this configuration:",
     "tabDeploymentItem1": "Validate configuration against the target environment profile.",
     "tabDeploymentItem2": "Run automated regression tests on dependent services.",
@@ -44,16 +54,6 @@
     "fieldId": "Identifier",
     "fieldValue": "Value",
     "fieldSubitems": "Sub-items"
-  },
-  "templates": {
-    "title": "Templates",
-    "description": "Create and manage reusable configuration templates.",
-    "body": "Templates help standardize setup patterns and reduce repetitive configuration work."
-  },
-  "assetConfiguration": {
-    "title": "Asset Configuration",
-    "description": "Configure asset behavior, metadata, and mappings.",
-    "body": "Manage asset-specific rules and associations to ensure consistent configuration outcomes."
   },
   "application": {
     "title": "Application",

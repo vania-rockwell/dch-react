@@ -1,5 +1,5 @@
 import type { TreeNode } from "../components/Tree/types";
-import sampleRoots from "../assets/data/parameterTree.sample.json";
+import sampleRoots from "../assets/data/assetConfigurationTree.sample.json";
 
 const MOCK_LATENCY_MS = 350;
 
@@ -40,15 +40,15 @@ function normalizeRoots(raw: unknown): TreeNode[] {
   return list.map(normalizeNode);
 }
 
-export type FetchParameterTreeOptions = {
+export type FetchAssetConfigurationTreeOptions = {
   signal?: AbortSignal;
 };
 
 /**
- * Sample loader for the parameters tree. Uncomment the FastAPI branch when your backend is ready.
+ * Sample loader for the asset configuration tree. Uncomment the FastAPI branch when your backend is ready.
  */
-export async function fetchParameterTree(
-  options?: FetchParameterTreeOptions
+export async function fetchAssetConfigurationTree(
+  options?: FetchAssetConfigurationTreeOptions
 ): Promise<TreeNode[]> {
   const signal = options?.signal;
 
@@ -77,12 +77,12 @@ export async function fetchParameterTree(
 
   /*
   const base = String(import.meta.env.VITE_API_BASE_URL ?? "").replace(/\/$/, "");
-  const res = await fetch(`${base}/api/parameters/tree`, {
+  const res = await fetch(`${base}/api/asset-configuration/tree`, {
     signal,
     headers: { Accept: "application/json" },
   });
   if (!res.ok) {
-    throw new Error(`Could not load parameters tree (${res.status})`);
+    throw new Error(`Could not load asset configuration tree (${res.status})`);
   }
   const payload: unknown = await res.json();
   return normalizeRoots(payload);
