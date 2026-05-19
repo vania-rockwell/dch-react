@@ -4,21 +4,23 @@ import "./Badge.scss";
 type BadgeColor =
   | "primary"
   | "secondary"
-  | "danger"
   | "success"
+  | "danger"
   | "warning"
   | "info"
-  | "ghost"
   | "blue"
   | "indigo"
   | "purple"
   | "pink"
+  | "red"
   | "orange"
   | "yellow"
+  | "green"
   | "teal"
   | "cyan"
-  | "gray"
-  | "dark";
+  | "white"
+  | "black"
+  | "gray";
 
 interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
@@ -36,21 +38,23 @@ interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 const colorStyles: Record<BadgeColor, string> = {
   primary: "badge--primary",
   secondary: "badge--secondary",
-  danger: "badge--danger",
   success: "badge--success",
+  danger: "badge--danger",
   warning: "badge--warning",
   info: "badge--info",
-  ghost: "badge--ghost",
   blue: "badge--blue",
   indigo: "badge--indigo",
   purple: "badge--purple",
   pink: "badge--pink",
+  red: "badge--red",
   orange: "badge--orange",
   yellow: "badge--yellow",
+  green: "badge--green",
   teal: "badge--teal",
   cyan: "badge--cyan",
+  white: "badge--white",
+  black: "badge--black",
   gray: "badge--gray",
-  dark: "badge--dark",
 };
 
 /**

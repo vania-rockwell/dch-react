@@ -51,13 +51,13 @@
     color: rgb(var(--color-light));
   }
 
-  &--danger {
-    background-color: rgb(var(--color-danger));
+  &--success {
+    background-color: rgb(var(--color-success));
     color: rgb(var(--color-light));
   }
 
-  &--success {
-    background-color: rgb(var(--color-success));
+  &--danger {
+    background-color: rgb(var(--color-danger));
     color: rgb(var(--color-light));
   }
 
@@ -68,7 +68,7 @@
 
   &--info {
     background-color: rgb(var(--color-info));
-    color: rgb(var(--color-dark));
+    color: rgb(var(--color-light));
   }
 
   &--blue {
@@ -91,6 +91,11 @@
     color: rgb(var(--color-light));
   }
 
+  &--red {
+    background-color: rgb(var(--color-red));
+    color: rgb(var(--color-light));
+  }
+
   &--orange {
     background-color: rgb(var(--color-orange));
     color: rgb(var(--color-light));
@@ -98,7 +103,12 @@
 
   &--yellow {
     background-color: rgb(var(--color-yellow));
-    color: rgb(var(--color-dark));
+    color: rgb(var(--color-light));
+  }
+
+  &--green {
+    background-color: rgb(var(--color-green));
+    color: rgb(var(--color-light));
   }
 
   &--teal {
@@ -108,7 +118,19 @@
 
   &--cyan {
     background-color: rgb(var(--color-cyan));
-    color: rgb(var(--color-dark));
+    color: rgb(var(--color-light));
+  }
+
+  &--white {
+    border-color: rgb(var(--color-neutral));
+    background-color: rgb(var(--color-white));
+    color: rgb(var(--color-black));
+  }
+
+  &--black {
+    border-color: rgb(var(--color-gray));
+    background-color: rgb(var(--color-black));
+    color: rgb(var(--color-white));
   }
 
   &--gray {
@@ -116,34 +138,25 @@
     color: rgb(var(--color-light));
   }
 
-  &--dark {
-    background-color: rgb(var(--color-dark));
-    color: rgb(var(--color-light));
-  }
-
-  &--ghost {
-    border-color: rgb(var(--color-neutral));
-    background-color: rgb(var(--color-light));
-    color: rgb(var(--color-dark));
-  }
-
   &--primary:hover,
   &--secondary:hover,
-  &--danger:hover,
   &--success:hover,
+  &--danger:hover,
   &--warning:hover,
   &--info:hover,
   &--blue:hover,
   &--indigo:hover,
   &--purple:hover,
   &--pink:hover,
+  &--red:hover,
   &--orange:hover,
   &--yellow:hover,
+  &--green:hover,
   &--teal:hover,
   &--cyan:hover,
-  &--gray:hover,
-  &--dark:hover,
-  &--ghost:hover {
+  &--white:hover,
+  &--black:hover,
+  &--gray:hover {
     filter: brightness(0.95);
   }
 }

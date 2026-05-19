@@ -1,97 +1,98 @@
-import React from "react";
-import { Button } from "@/components/Button/Button";
-import Badge from "@/components/Badge/Badge";
+import React, { useState } from "react";
+import {
+  Button,
+  type ButtonSize,
+  type ButtonVariant,
+} from "@/components/Button/Button";
+import Badge, { type BadgeColor } from "@/components/Badge/Badge";
+import Modal, { type ModalSize } from "@/components/Modal/Modal";
+import Snackbar, {
+  type SnackbarVariant,
+  type SnackbarPosition,
+} from "@/components/Snackbar/Snackbar";
+import Select, { type SelectSize, type SelectOption } from "@/components/Select/Select";
 import "./showcase.scss";
-
-type ButtonVariant =
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "success"
-  | "warning"
-  | "info"
-  | "ghost"
-  | "blue"
-  | "indigo"
-  | "purple"
-  | "pink"
-  | "orange"
-  | "yellow"
-  | "teal"
-  | "cyan"
-  | "gray"
-  | "dark";
-type ButtonSize = "sm" | "md" | "lg";
-type BadgeColor =
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "success"
-  | "warning"
-  | "info"
-  | "ghost"
-  | "blue"
-  | "indigo"
-  | "purple"
-  | "pink"
-  | "orange"
-  | "yellow"
-  | "teal"
-  | "cyan"
-  | "gray"
-  | "dark";
 
 const buttonVariants: ButtonVariant[] = [
   "primary",
   "secondary",
-  "danger",
   "success",
+  "danger",
   "warning",
   "info",
-  "ghost",
   "blue",
   "indigo",
   "purple",
   "pink",
+  "red",
   "orange",
   "yellow",
+  "green",
   "teal",
   "cyan",
+  "white",
+  "black",
   "gray",
-  "dark",
 ];
 const buttonSizes: ButtonSize[] = ["sm", "md", "lg"];
 const badgeColors: BadgeColor[] = [
   "primary",
   "secondary",
-  "danger",
   "success",
+  "danger",
   "warning",
   "info",
-  "ghost",
   "blue",
   "indigo",
   "purple",
   "pink",
+  "red",
   "orange",
   "yellow",
+  "green",
   "teal",
   "cyan",
+  "white",
+  "black",
   "gray",
-  "dark",
 ];
 
 /**
  * Component showcase page displaying all available button variants/sizes and badge colors.
  * Useful for design system review and component documentation.
  */
+const modalSizes: ModalSize[] = ["sm", "md", "lg", "xl"];
+const snackbarVariants: SnackbarVariant[] = ["info", "success", "warning", "danger"];
+const snackbarPositions: SnackbarPosition[] = ["top-right", "bottom-right"];
+const selectSizes: SelectSize[] = ["sm", "md", "lg"];
+const selectDemoOptions: SelectOption[] = [
+  { value: "opt1", label: "Option 1" },
+  { value: "opt2", label: "Option 2" },
+  { value: "opt3", label: "Option 3" },
+];
+
 export const ComponentShowcasePage: React.FC = () => {
+  const [openModal, setOpenModal] = useState<ModalSize | null>(null);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarConfig, setSnackbarConfig] = useState<{ variant: SnackbarVariant; position: SnackbarPosition }>({
+    variant: "info",
+    position: "top-right",
+  });
+
+  const openSnackbar = (variant: SnackbarVariant, position: SnackbarPosition) => {
+    setSnackbarConfig({ variant, position });
+    setSnackbarOpen(true);
+  };
+
   return (
     <div className="showcase-container">
       <div className="showcase-header">
         <h1>Component Showcase</h1>
         <p className="showcase-subtitle">
-          Preview of all available button variants, sizes, and badge colors
+          Preview of all available button variants, sizes, badge colors, modal sizes, snackbar variants/positions, and select sizes. 
+        </p>
+        <p className="showcase-subtitle">
+          Useful for design system review and documentation.
         </p>
       </div>
 
@@ -120,33 +121,6 @@ export const ComponentShowcasePage: React.FC = () => {
               <div key={size} className="showcase-item">
                 <div className="item-label">{size}</div>
                 <Button size={size}>Button</Button>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Button Variant + Size Matrix */}
-        <div className="showcase-subsection">
-          <h3>Variants × Sizes</h3>
-          <div className="showcase-table">
-            <div className="table-header">
-              <div className="table-cell"></div>
-              {buttonSizes.map((size) => (
-                <div key={size} className="table-cell">
-                  {size}
-                </div>
-              ))}
-            </div>
-            {buttonVariants.map((variant) => (
-              <div key={variant} className="table-row">
-                <div className="table-cell variant-label">{variant}</div>
-                {buttonSizes.map((size) => (
-                  <div key={`${variant}-${size}`} className="table-cell">
-                    <Button variant={variant} size={size}>
-                      Button
-                    </Button>
-                  </div>
-                ))}
               </div>
             ))}
           </div>
@@ -213,6 +187,113 @@ export const ComponentShowcasePage: React.FC = () => {
               <Badge color="info">Info</Badge>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Modal Section */}
+      <section className="showcase-section">
+        <h2>Modal</h2>
+
+        <div className="showcase-subsection">
+          <h3>Sizes</h3>
+          <div className="showcase-grid">
+            {modalSizes.map((size) => (
+              <div key={size} className="showcase-item">
+                <div className="item-label">{size}</div>
+                <Button variant="primary" size="sm" onClick={() => setOpenModal(size)}>
+                  Open {size}
+                </Button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {modalSizes.map((size) => (
+          <Modal
+            key={size}
+            open={openModal === size}
+            title={`Modal — ${size}`}
+            size={size}
+            onClose={() => setOpenModal(null)}
+            actions={
+              <Button variant="primary" size="sm" onClick={() => setOpenModal(null)}>
+                Close
+              </Button>
+            }
+          >
+            <p>This is a <strong>{size}</strong> modal. Click outside or press Close to dismiss.</p>
+          </Modal>
+        ))}
+      </section>
+
+      {/* Snackbar Section */}
+      <section className="showcase-section">
+        <h2>Snackbar</h2>
+
+        <div className="showcase-subsection">
+          <h3>Variants (top-right)</h3>
+          <div className="showcase-grid">
+            {snackbarVariants.map((variant) => (
+              <div key={variant} className="showcase-item">
+                <div className="item-label">{variant}</div>
+                <Button
+                  variant={variant}
+                  size="sm"
+                  onClick={() => openSnackbar(variant, "top-right")}
+                >
+                  Show
+                </Button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="showcase-subsection">
+          <h3>Positions</h3>
+          <div className="showcase-grid">
+            {snackbarPositions.map((position) => (
+              <div key={position} className="showcase-item">
+                <div className="item-label">{position}</div>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => openSnackbar("info", position)}
+                >
+                  Show
+                </Button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <Snackbar
+          open={snackbarOpen}
+          message={`${snackbarConfig.variant} — ${snackbarConfig.position}`}
+          variant={snackbarConfig.variant}
+          position={snackbarConfig.position}
+          onClose={() => setSnackbarOpen(false)}
+        />
+      </section>
+
+      {/* Select Section */}
+      <section className="showcase-section">
+        <h2>Select</h2>
+
+        <div className="showcase-subsection">
+          <h3>Sizes</h3>
+          <div className="showcase-grid">
+            {selectSizes.map((size) => (
+              <div key={size} className="showcase-item">
+                <div className="item-label">{size}</div>
+                <Select options={selectDemoOptions} size={size} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="showcase-subsection">
+          <h3>Full Width</h3>
+          <Select options={selectDemoOptions} fullWidth />
         </div>
       </section>
     </div>

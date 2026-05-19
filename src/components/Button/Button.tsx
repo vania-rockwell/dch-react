@@ -2,30 +2,32 @@ import React from "react";
 import type { LucideIcon } from "lucide-react";
 import "./Button.scss";
 
-type ButtonVariant =
+export type ButtonVariant =
   | "primary"
   | "secondary"
-  | "danger"
   | "success"
+  | "danger"
   | "warning"
   | "info"
-  | "ghost"
   | "blue"
   | "indigo"
   | "purple"
   | "pink"
+  | "red"
   | "orange"
   | "yellow"
+  | "green"
   | "teal"
   | "cyan"
-  | "gray"
-  | "dark";
-type ButtonSize = "sm" | "md" | "lg";
+  | "white"
+  | "black"
+  | "gray";
+export type ButtonSize = "sm" | "md" | "lg";
 type ButtonIconPosition = "start" | "end";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * Button variant: 'primary', 'secondary', 'danger', 'success', 'warning', 'info', 'ghost'
+   * Button variant: 'primary', 'secondary', 'danger', 'success', 'warning', 'info', 'white'
    * @default 'primary'
    */
   variant?: ButtonVariant;
@@ -62,21 +64,23 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const variantStyles: Record<ButtonVariant, string> = {
   primary: "btn--primary",
   secondary: "btn--secondary",
-  danger: "btn--danger",
   success: "btn--success",
+  danger: "btn--danger",
   warning: "btn--warning",
   info: "btn--info",
-  ghost: "btn--ghost",
   blue: "btn--blue",
   indigo: "btn--indigo",
   purple: "btn--purple",
   pink: "btn--pink",
+  red: "btn--red",
   orange: "btn--orange",
   yellow: "btn--yellow",
+  green: "btn--green",
   teal: "btn--teal",
   cyan: "btn--cyan",
+  white: "btn--white",
+  black: "btn--black",
   gray: "btn--gray",
-  dark: "btn--dark",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {

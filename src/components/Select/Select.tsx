@@ -1,9 +1,9 @@
 import React from "react";
 import "./Select.scss";
 
-type SelectSize = "sm" | "md" | "lg";
+export type SelectSize = "sm" | "md" | "lg";
 
-type SelectOption = {
+export type SelectOption = {
   value: string;
   label: string;
 };

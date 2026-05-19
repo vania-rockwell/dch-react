@@ -22,16 +22,16 @@
     color: rgb(var(--color-secondary));
   }
 
-  &--danger {
-    background-color: rgb(var(--color-danger) / 0.14);
-    border-color: rgb(var(--color-danger) / 0.3);
-    color: rgb(var(--color-danger));
-  }
-
   &--success {
     background-color: rgb(var(--color-success) / 0.14);
     border-color: rgb(var(--color-success) / 0.3);
     color: rgb(var(--color-success));
+  }
+
+  &--danger {
+    background-color: rgb(var(--color-danger) / 0.14);
+    border-color: rgb(var(--color-danger) / 0.3);
+    color: rgb(var(--color-danger));
   }
 
   &--warning {
@@ -70,6 +70,12 @@
     color: rgb(var(--color-pink));
   }
 
+  &--red {
+    background-color: rgb(var(--color-red) / 0.14);
+    border-color: rgb(var(--color-red) / 0.3);
+    color: rgb(var(--color-red));
+  }
+
   &--orange {
     background-color: rgb(var(--color-orange) / 0.14);
     border-color: rgb(var(--color-orange) / 0.3);
@@ -80,6 +86,12 @@
     background-color: rgb(var(--color-yellow) / 0.14);
     border-color: rgb(var(--color-yellow) / 0.3);
     color: rgb(var(--color-yellow));
+  }
+
+  &--green {
+    background-color: rgb(var(--color-green) / 0.14);
+    border-color: rgb(var(--color-green) / 0.3);
+    color: rgb(var(--color-green));
   }
 
   &--teal {
@@ -94,21 +106,21 @@
     color: rgb(var(--color-cyan));
   }
 
+  &--white {
+    background-color: rgb(var(--color-white));
+    border-color: rgb(var(--color-black) / 0.3);
+    color: rgb(var(--color-black));
+  }
+
+  &--black {
+    background-color: rgb(var(--color-black) / 0.8);
+    border-color: rgb(var(--color-gray) / 0.3);
+    color: rgb(var(--color-white));
+  }
+
   &--gray {
     background-color: rgb(var(--color-gray) / 0.14);
     border-color: rgb(var(--color-gray) / 0.3);
     color: rgb(var(--color-gray));
-  }
-
-  &--dark {
-    background-color: rgb(var(--color-dark) / 0.14);
-    border-color: rgb(var(--color-dark) / 0.3);
-    color: rgb(var(--color-dark));
-  }
-
-  &--ghost {
-    background-color: rgb(var(--color-light));
-    border-color: rgb(var(--color-neutral));
-    color: rgb(var(--color-dark));
   }
 }

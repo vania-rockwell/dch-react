@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import "./Snackbar.scss";
 
-type SnackbarVariant = "info" | "success" | "warning" | "danger";
-type SnackbarPosition = "top-right" | "bottom-right";
+export type SnackbarVariant = "info" | "success" | "warning" | "danger";
+export type SnackbarPosition = "top-right" | "bottom-right";
 
 const SNACKBAR_TRANSITION_MS = 250;
 

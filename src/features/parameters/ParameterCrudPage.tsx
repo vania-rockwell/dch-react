@@ -25,7 +25,7 @@ type DomainOption = {
 
 const domainOptions: DomainOption[] = [
   { id: "production", label: "Production", color: "primary" },
-  { id: "batch", label: "Batch", color: "ghost" },
+  { id: "batch", label: "Batch", color: "white" },
   { id: "machine-event", label: "Machine Event", color: "gray" },
   { id: "line-view", label: "Line View", color: "blue" },
   { id: "filler", label: "Filler", color: "indigo" },
@@ -34,7 +34,7 @@ const domainOptions: DomainOption[] = [
   { id: "transport", label: "Transport", color: "orange" },
   { id: "inspection", label: "Inspection", color: "yellow" },
   { id: "maintenance", label: "Maintenance", color: "teal" },
-  { id: "calibration", label: "Calibration", color: "dark" },
+  { id: "calibration", label: "Calibration", color: "black" },
 ];
 
 const dataTypeOptions = [
@@ -166,7 +166,7 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
           size="md"
           actions={
             <>
-              <Button type="button" variant="ghost" onClick={closeDomainModal}>
+              <Button type="button" variant="white" onClick={closeDomainModal}>
                 {t("common:actions.cancel")}
               </Button>
               <Button type="button" variant="primary" onClick={confirmDomains}>
@@ -194,7 +194,7 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
         </Modal>
 
         <div className="parameter-crud__footer">
-          <Button type="button" variant="ghost" onClick={() => navigate("/parameters")}>
+          <Button type="button" variant="white" onClick={() => navigate("/parameters")}>
             {t("common:actions.cancel")}
           </Button>
           <Button type="submit" variant={isDelete ? "danger" : "primary"}>

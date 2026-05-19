@@ -53,7 +53,7 @@ export default function ApplicationPage() {
         </label>
 
         <Button
-          variant="ghost"
+          variant="white"
           size="sm"
           onClick={() => setMode(mode === "light" ? "dark" : "light")}
           aria-label={tCommon("aria.toggleColorMode")}
