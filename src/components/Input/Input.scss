@@ -1,0 +1,221 @@
+/* ─────────────────────────────────────────
+   Base input element
+───────────────────────────────────────── */
+.input {
+  width: 100%;
+  border: 1px solid rgb(var(--color-neutral));
+  border-radius: var(--radius-md);
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-dark));
+  padding-inline: var(--space-3);
+  transition: border-color 0.15s ease, outline 0.15s ease;
+
+  &::placeholder {
+    color: rgb(var(--color-neutral));
+    opacity: 0.7;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgb(var(--color-primary) / 0.45);
+    outline-offset: 1px;
+    border-color: rgb(var(--color-primary) / 0.6);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Size variants */
+  &--sm {
+    min-height: var(--size-control-sm);
+    font-size: 0.875rem;
+    max-width: var(--size-control-width-sm);
+  }
+
+  &--md {
+    min-height: var(--size-control-md);
+    font-size: 1rem;
+    max-width: var(--size-control-width-md);
+  }
+
+  &--lg {
+    min-height: var(--size-control-lg);
+    font-size: 1.125rem;
+    max-width: var(--size-control-width-lg);
+  }
+
+  /* Error state */
+  &--error {
+    border-color: rgb(var(--color-danger, 220 38 38));
+
+    &:focus-visible {
+      outline-color: rgb(var(--color-danger, 220 38 38) / 0.45);
+      border-color: rgb(var(--color-danger, 220 38 38));
+    }
+  }
+}
+
+/* ─────────────────────────────────────────
+   Field: icon slots
+───────────────────────────────────────── */
+.input-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &--has-start-icon .input {
+    padding-inline-start: var(--space-8);
+  }
+
+  &--has-end-icon .input {
+    padding-inline-end: var(--space-8);
+  }
+}
+
+.input-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  color: rgb(var(--color-neutral));
+
+  svg {
+    width: 1em;
+    height: 1em;
+  }
+
+  &--start {
+    left: var(--space-3);
+  }
+
+  &--end {
+    right: var(--space-3);
+  }
+}
+
+/* ─────────────────────────────────────────
+   Label
+───────────────────────────────────────── */
+.input-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(var(--color-dark));
+  white-space: nowrap;
+
+  &__text {
+    flex-shrink: 0;
+  }
+}
+
+/* ─────────────────────────────────────────
+   Wrapper + label position variants
+───────────────────────────────────────── */
+.input-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-1);
+
+  &--full-width {
+    width: 100%;
+
+    .input-field,
+    .input {
+      width: 100%;
+      max-width: none;
+    }
+  }
+
+  /* label: top (default — column layout already handles this) */
+  &--label-top {
+    flex-direction: column;
+
+    .input-label {
+      margin-bottom: var(--space-1);
+    }
+  }
+
+  /* label: left */
+  &--label-left {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-3);
+
+    .input-label {
+      margin-bottom: 0;
+    }
+
+    /* push helper text below the field, not beside the label */
+    .input-helper {
+      grid-column: 2;
+    }
+  }
+
+  /* label: right */
+  &--label-right {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-3);
+
+    .input-label {
+      margin-bottom: 0;
+      order: 1;
+    }
+
+    .input-field {
+      order: 0;
+    }
+  }
+
+  /* label: floating — label lives inside .input-field */
+  &--label-floating {
+    flex-direction: column;
+
+    .input-field {
+      position: relative;
+    }
+  }
+}
+
+/* ─────────────────────────────────────────
+   Floating label
+───────────────────────────────────────── */
+.input-label--floating {
+  position: absolute;
+  left: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgb(var(--color-neutral));
+  pointer-events: none;
+  transition: top 0.15s ease, font-size 0.15s ease, color 0.15s ease,
+    transform 0.15s ease;
+  background-color: rgb(var(--color-bg));
+  padding-inline: var(--space-1);
+  line-height: 1;
+}
+
+/* Float the label up when the input has content or is focused */
+.input:focus ~ .input-label--floating,
+.input:not(:placeholder-shown) ~ .input-label--floating {
+  top: 0;
+  font-size: 0.75rem;
+  color: rgb(var(--color-primary));
+  transform: translateY(-50%);
+}
+
+/* ─────────────────────────────────────────
+   Helper / error text
+───────────────────────────────────────── */
+.input-helper {
+  font-size: 0.75rem;
+  color: rgb(var(--color-neutral));
+
+  &--error {
+    color: rgb(var(--color-danger, 220 38 38));
+  }
+}

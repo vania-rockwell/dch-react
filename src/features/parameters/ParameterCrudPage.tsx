@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 import Badge from "@/components/Badge/Badge";
 import type { BadgeColor } from "@/components/Badge/Badge";
+import Input from "@/components/Input/Input";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/Button/Button";
 import Modal from "@/components/Modal/Modal";
@@ -266,31 +267,22 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
               const requiredLocale = option.code === currentLocale;
 
               return (
-                <label
-                  className="parameter-crud__name-field"
+                <Input
                   key={option.code}
-                  htmlFor={`parameter-name-input-${option.code}`}
-                >
-                  <div className="parameter-crud__label-row parameter-crud__label-row--stacked">
-                    <span className="parameter-crud__label">{option.label}</span>
-                    <Badge color={requiredLocale ? "success" : "gray"}>
-                      {requiredLocale ? t("common:fields.required") : t("common:fields.optional")}
-                    </Badge>
-                  </div>
-                  <input
-                    id={`parameter-name-input-${option.code}`}
-                    className="parameter-crud__input"
-                    value={names[option.code] ?? ""}
-                    onChange={(event) =>
-                      setNames((currentNames) => ({
-                        ...currentNames,
-                        [option.code]: event.target.value,
-                      }))
-                    }
-                    disabled={isDelete}
-                    required={requiredLocale}
-                  />
-                </label>
+                  id={`parameter-name-input-${option.code}`}
+                  // className="parameter-crud__name-field"
+                  label={option.label}
+                  value={names[option.code] ?? ""}
+                  onChange={(event) =>
+                    setNames((currentNames) => ({
+                      ...currentNames,
+                      [option.code]: event.target.value,
+                    }))
+                  }
+                  disabled={isDelete}
+                  required={requiredLocale}
+                  requiredLabel={requiredLocale ? t("common:fields.required") : undefined}
+                />
               );
             })}
           </div>
@@ -303,7 +295,6 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
             options={dataTypeOptions}
             value={dataType}
             onChange={(event) => setDataType(event.target.value)}
-            size="sm"
             disabled={isDelete}
           />
         </label>

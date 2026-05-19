@@ -1,4 +1,5 @@
 .select {
+  width: 100%;
   border: 1px solid rgb(var(--color-neutral));
   border-radius: var(--radius-md);
   background-color: rgb(var(--color-bg));
@@ -14,21 +15,25 @@
 
   &--full-width {
     width: 100%;
+    max-width: none;
   }
 
   &--sm {
     min-height: var(--size-control-sm);
     font-size: 0.875rem;
+    max-width: var(--size-control-width-sm);
   }
 
   &--md {
     min-height: var(--size-control-md);
     font-size: 1rem;
+    max-width: var(--size-control-width-md);
   }
 
   &--lg {
     min-height: var(--size-control-lg);
     font-size: 1.125rem;
+    max-width: var(--size-control-width-lg);
   }
 
   option {
