@@ -2,13 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Plus, Pencil, Trash2 } from "lucide-react";
-import { Button } from "../../components/Button/Button";
-import Badge from "../../components/Badge/Badge";
-import type { BadgeColor } from "../../components/Badge/Badge";
-import type { TableColumn } from "../../components/Table/Table";
-import Table from "../../components/Table/Table";
-import PageSection from "../../components/PageSection/PageSection";
-import { fetchParametersTable, type ParameterTableRow } from "../../services/parametersService";
+import { Button } from "@/components/Button/Button";
+import Badge from "@/components/Badge/Badge";
+import type { TableColumn } from "@/components/Table/Table";
+import Table from "@/components/Table/Table";
+import PageSection from "@/components/PageSection/PageSection";
+import { fetchParametersTable, type ParameterTableRow } from "@/services/parametersService";
+import i18n from "@/locales/i18n";
 import "./ParametersPage.scss";
 
 export default function ParametersPage() {
@@ -52,36 +52,51 @@ export default function ParametersPage() {
       return rows;
     }
 
+    const locale = (i18n.resolvedLanguage ?? i18n.language ?? "en").split("-")[0];
+
     return rows.filter((row) => {
-      const searchable = `${row.capabilityDomain} ${row.name} ${row.dataType}`.toLowerCase();
+      const localeName =
+        row.translationName.find((entry) => entry.locale === locale)?.value ??
+        row.translationName[0]?.value ??
+        row.parameterName;
+      const domainLabels = row.capabilityDomains.map((d) => d.label).join(" ");
+      const searchable = `${domainLabels} ${localeName} ${row.dataType}`.toLowerCase();
       return searchable.includes(normalizedSearch);
     });
   }, [search, rows]);
 
   const columns: TableColumn<ParameterTableRow>[] = [
     {
-      key: "capabilityDomain",
-      header: t("parameters.table.headers.capabilityDomain"),
+      key: "parameterName",
+      header: t("parameters.table.headers.parameterName"),
     },
     {
-      key: "name",
+      key: "translationName",
       header: t("common:fields.name"),
+      render: (value) => {
+        const locale = (i18n.resolvedLanguage ?? i18n.language ?? "en").split("-")[0];
+        const names = value as ParameterTableRow["translationName"];
+        return (
+          names.find((entry) => entry.locale === locale)?.value ??
+          names[0]?.value ??
+          ""
+        );
+      },
     },
     {
       key: "dataType",
       header: t("parameters.table.headers.dataType"),
     },
     {
-      key: "contexts",
-      header: t("parameters.table.headers.contexts"),
+      key: "capabilityDomains",
+      header: t("parameters.table.headers.capabilityDomain"),
       render: (value) => {
-        const badges = value as ParameterTableRow["contexts"];
-
+        const domains = value as ParameterTableRow["capabilityDomains"];
         return (
           <div className="parameters-page__context-badges">
-            {badges.map((badge, index) => (
-              <Badge key={`${badge.label}-${badge.color}-${index}`} color={badge.color as BadgeColor}>
-                {badge.label}
+            {domains.map((domain, index) => (
+              <Badge key={`${domain.label}-${domain.color}-${index}`} color={domain.color}>
+                {domain.label}
               </Badge>
             ))}
           </div>
@@ -90,7 +105,7 @@ export default function ParametersPage() {
     },
     {
       key: "id",
-      header: t("parameters.table.headers.actions"),
+      header: t("common:actions.actions"),
       align: "center",
       render: (_value, row) => (
         <div className="parameters-page__actions-cell">

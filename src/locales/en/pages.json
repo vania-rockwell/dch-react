@@ -19,10 +19,10 @@
     "table": {
       "empty": "No parameters found.",
       "headers": {
+        "parameterName": "Parameter Name",
         "capabilityDomain": "Capability Domain",
         "dataType": "Data Type",
-        "contexts": "Contexts",
-        "actions": "Actions"
+        "contexts": "Contexts"
       }
     }
   },

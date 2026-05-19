@@ -1,5 +1,6 @@
 {
   "actions": {
+    "actions": "Acciones",
     "add": "Agregar",
     "create": "Crear",
     "edit": "Editar",
@@ -21,6 +22,8 @@
   },
   "fields": {
     "name": "Nombre",
+    "required": "Obligatorio",
+    "optional": "Opcional",
     "theme": "Tema",
     "language": "Idioma"
   },

@@ -2,28 +2,39 @@
   "items": [
     {
       "id": "batch-start",
-      "capabilityDomain": "Batch",
-      "name": "BatchStart",
+      "parameterName": "Batch Start",
+      "translationName": [
+        { "locale": "en", "value": "Batch Start" },
+        { "locale": "es", "value": "Inicio Lote" },
+        { "locale": "it", "value": "Inizio Lotto" }
+      ],
       "dataType": "Boolean",
-      "contexts": [
+      "capabilityDomains": [
         { "label": "Vials", "color": "purple" },
         { "label": "Batch", "color": "blue" }
       ]
     },
     {
       "id": "batch-stop",
-      "capabilityDomain": "Batch",
-      "name": "BatchStop",
+      "parameterName": "Batch Stop",
+      "translationName": [
+        { "locale": "en", "value": "Batch Stop" },
+        { "locale": "es", "value": "Fin Lote" },
+        { "locale": "it", "value": "Fine Lotto" }
+      ],
       "dataType": "Boolean",
-      "contexts": [
-      ]
+      "capabilityDomains": []
     },
     {
       "id": "machine-event-enabled",
-      "capabilityDomain": "Machine Event",
-      "name": "MachineEventEnabled",
+      "parameterName": "Machine Event",
+      "translationName": [
+        { "locale": "en", "value": "Machine Event Enabled" },
+        { "locale": "es", "value": "Evento Maquina Habilitado" },
+        { "locale": "it", "value": "Evento Macchina Abilitato" }
+      ],
       "dataType": "Boolean",
-      "contexts": [
+      "capabilityDomains": [
         { "label": "Production", "color": "primary" },
         { "label": "Machine Event", "color": "gray" }
       ]

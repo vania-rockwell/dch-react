@@ -14,6 +14,10 @@
 		&--domains {
 			max-width: 100%;
 		}
+
+		&--names {
+			max-width: 100%;
+		}
 	}
 
 	&__label-row {
@@ -21,6 +25,10 @@
 		align-items: center;
 		justify-content: space-between;
 		gap: var(--space-3);
+
+		&--stacked {
+			align-items: flex-start;
+		}
 	}
 
 	&__label {
@@ -31,6 +39,16 @@
 	&__badges {
 		display: flex;
 		flex-wrap: wrap;
+		gap: var(--space-2);
+	}
+
+	&__name-fields {
+		display: grid;
+		gap: var(--space-3);
+	}
+
+	&__name-field {
+		display: grid;
 		gap: var(--space-2);
 	}
 

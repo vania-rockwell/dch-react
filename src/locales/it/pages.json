@@ -19,10 +19,10 @@
     "table": {
       "empty": "Nessun parametro trovato.",
       "headers": {
+        "parameterName": "Nome parametro",
         "capabilityDomain": "Dominio capacità",
         "dataType": "Tipo di dato",
-        "contexts": "Contesti",
-        "actions": "Azioni"
+        "contexts": "Contesti"
       }
     }
   },

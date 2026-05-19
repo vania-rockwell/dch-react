@@ -1,14 +1,22 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
-import Badge from "../../components/Badge/Badge";
-import type { BadgeColor } from "../../components/Badge/Badge";
+import { useNavigate, useParams } from "react-router-dom";
+import Badge from "@/components/Badge/Badge";
+import type { BadgeColor } from "@/components/Badge/Badge";
 import { Plus } from "lucide-react";
-import { Button } from "../../components/Button/Button";
-import Modal from "../../components/Modal/Modal";
-import PageSection from "../../components/PageSection/PageSection";
-import Select from "../../components/Select/Select";
-import Snackbar from "../../components/Snackbar/Snackbar";
+import { Button } from "@/components/Button/Button";
+import Modal from "@/components/Modal/Modal";
+import PageSection from "@/components/PageSection/PageSection";
+import Select from "@/components/Select/Select";
+import Snackbar from "@/components/Snackbar/Snackbar";
+import i18n from "@/locales/i18n";
+import {
+  createParameter,
+  deleteParameter,
+  fetchParameterById,
+  updateParameter,
+  type ParameterUpsertPayload,
+} from "@/services/parametersService";
 import "./ParameterCrudPage.scss";
 
 type ParameterCrudMode = "new" | "edit" | "delete";
@@ -21,6 +29,11 @@ type DomainOption = {
   id: string;
   label: string;
   color: BadgeColor;
+};
+
+type LocaleOption = {
+  code: string;
+  label: string;
 };
 
 const domainOptions: DomainOption[] = [
@@ -46,15 +59,85 @@ const dataTypeOptions = [
 export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
   const { t } = useTranslation("pages");
   const navigate = useNavigate();
-
-  const [name, setName] = useState(mode === "new" ? "" : "BatchStart");
+  const { parameterId } = useParams<{ parameterId: string }>();
   const [dataType, setDataType] = useState(mode === "new" ? "boolean" : "boolean");
-  const [selectedDomains, setSelectedDomains] = useState<string[]>(
-    mode === "new" ? ["production"] : ["production", "batch"]
-  );
+  const [selectedDomains, setSelectedDomains] = useState<string[]>([]);
   const [domainModalOpen, setDomainModalOpen] = useState(false);
   const [draftDomains, setDraftDomains] = useState<string[]>(selectedDomains);
   const [submitSnackbarOpen, setSubmitSnackbarOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const localeCodes = useMemo(() => {
+    const resources = i18n.options.resources as Record<string, unknown> | undefined;
+
+    if (resources === undefined) {
+      return ["en"];
+    }
+
+    return Object.keys(resources);
+  }, []);
+
+  const currentLocale = (i18n.resolvedLanguage ?? i18n.language ?? localeCodes[0] ?? "en").split("-")[0];
+
+  const localeOptions = useMemo<LocaleOption[]>(() => {
+    const orderedLocaleCodes = [currentLocale, ...localeCodes.filter((code) => code !== currentLocale)];
+
+    return orderedLocaleCodes.map((code) => ({
+      code,
+      label: t(`common:languageOption.${code}`, { defaultValue: code.toUpperCase() }),
+    }));
+  }, [currentLocale, localeCodes]);
+
+  const [names, setNames] = useState<Record<string, string>>(() =>
+    localeCodes.reduce<Record<string, string>>((accumulator, code) => {
+      accumulator[code] = "";
+      return accumulator;
+    }, {})
+  );
+
+  useEffect(() => {
+    if (mode === "new" || parameterId === undefined) {
+      return;
+    }
+
+    const controller = new AbortController();
+
+    void fetchParameterById(parameterId, { signal: controller.signal })
+      .then((currentParameter) => {
+        if (currentParameter === null) {
+          return;
+        }
+
+        setNames((currentNames) => {
+          const nextNames = { ...currentNames };
+          for (const code of localeCodes) {
+            nextNames[code] =
+              currentParameter.translationName.find((entry) => entry.locale === code)?.value ?? "";
+          }
+          return nextNames;
+        });
+
+        setDataType(currentParameter.dataType.toLowerCase());
+
+        const nextSelectedDomains = currentParameter.capabilityDomains
+          .map((domain) =>
+            domainOptions.find(
+              (option) => option.label.toLowerCase() === domain.label.toLowerCase()
+            )?.id
+          )
+          .filter((id): id is string => id !== undefined);
+
+        setSelectedDomains(nextSelectedDomains);
+        setDraftDomains(nextSelectedDomains);
+      })
+      .catch(() => {
+        // Keep defaults when loading fails.
+      });
+
+    return () => {
+      controller.abort();
+    };
+  }, [localeCodes, mode, parameterId]);
 
   const openDomainModal = () => {
     setDraftDomains(selectedDomains);
@@ -97,8 +180,51 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
 
   const handleSubmit: React.ComponentProps<"form">["onSubmit"] = (event) => {
     event.preventDefault();
-    setSubmitSnackbarOpen(true);
-    window.setTimeout(() => navigate("/parameters"), 3000);
+
+    if (isSubmitting) {
+      return;
+    }
+
+    const translationName = localeCodes.map((code) => ({
+      locale: code,
+      value: names[code] ?? "",
+    }));
+
+    const currentLocaleName = names[currentLocale]?.trim();
+    const firstNonEmptyName = translationName.find((item) => item.value.trim().length > 0)?.value ?? "";
+
+    const payload: ParameterUpsertPayload = {
+      parameterName: currentLocaleName && currentLocaleName.length > 0 ? currentLocaleName : firstNonEmptyName,
+      translationName,
+      dataType,
+      capabilityDomains: selectedDomains
+        .map((id) => domainOptions.find((option) => option.id === id))
+        .filter((option): option is (typeof domainOptions)[number] => option !== undefined)
+        .map((option) => ({ label: option.label, color: option.color })),
+    };
+
+    setIsSubmitting(true);
+
+    const run =
+      mode === "new"
+        ? createParameter(payload)
+        : mode === "edit" && parameterId
+        ? updateParameter(parameterId, payload)
+        : mode === "delete" && parameterId
+        ? deleteParameter(parameterId)
+        : Promise.resolve();
+
+    void run
+      .then(() => {
+        setSubmitSnackbarOpen(true);
+        window.setTimeout(() => navigate("/parameters"), 3000);
+      })
+      .catch(() => {
+        setSubmitSnackbarOpen(true);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   const submitConfirmationVariant = useMemo(() => {
@@ -133,17 +259,42 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
           </div>
         </div>
 
-        <label className="parameter-crud__field" htmlFor="parameter-name-input">
+        <div className="parameter-crud__field parameter-crud__field--names">
           <span className="parameter-crud__label">{t("common:fields.name")}</span>
-          <input
-            id="parameter-name-input"
-            className="parameter-crud__input"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            disabled={isDelete}
-            required
-          />
-        </label>
+          <div className="parameter-crud__name-fields" role="group" aria-label={t("common:fields.name")}>
+            {localeOptions.map((option) => {
+              const requiredLocale = option.code === currentLocale;
+
+              return (
+                <label
+                  className="parameter-crud__name-field"
+                  key={option.code}
+                  htmlFor={`parameter-name-input-${option.code}`}
+                >
+                  <div className="parameter-crud__label-row parameter-crud__label-row--stacked">
+                    <span className="parameter-crud__label">{option.label}</span>
+                    <Badge color={requiredLocale ? "success" : "gray"}>
+                      {requiredLocale ? t("common:fields.required") : t("common:fields.optional")}
+                    </Badge>
+                  </div>
+                  <input
+                    id={`parameter-name-input-${option.code}`}
+                    className="parameter-crud__input"
+                    value={names[option.code] ?? ""}
+                    onChange={(event) =>
+                      setNames((currentNames) => ({
+                        ...currentNames,
+                        [option.code]: event.target.value,
+                      }))
+                    }
+                    disabled={isDelete}
+                    required={requiredLocale}
+                  />
+                </label>
+              );
+            })}
+          </div>
+        </div>
 
         <label className="parameter-crud__field" htmlFor="parameter-data-type-select">
           <span className="parameter-crud__label">{t("parameterCrud.fields.dataType")}</span>
@@ -197,7 +348,7 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
           <Button type="button" variant="white" onClick={() => navigate("/parameters")}>
             {t("common:actions.cancel")}
           </Button>
-          <Button type="submit" variant={isDelete ? "danger" : "primary"}>
+          <Button type="submit" variant={isDelete ? "danger" : "primary"} disabled={isSubmitting}>
             {submitLabel}
           </Button>
         </div>

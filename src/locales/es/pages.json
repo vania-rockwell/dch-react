@@ -19,10 +19,10 @@
     "table": {
       "empty": "No se encontraron parámetros.",
       "headers": {
+        "parameterName": "Nombre del parámetro",
         "capabilityDomain": "Dominio de capacidad",
         "dataType": "Tipo de dato",
-        "contexts": "Contextos",
-        "actions": "Acciones"
+        "contexts": "Contextos"
       }
     }
   },
