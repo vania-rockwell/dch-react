@@ -13,11 +13,6 @@
     outline-offset: 1px;
   }
 
-  &--full-width {
-    width: 100%;
-    max-width: none;
-  }
-
   &--sm {
     min-height: var(--size-control-sm);
     font-size: 0.875rem;
@@ -34,6 +29,11 @@
     min-height: var(--size-control-lg);
     font-size: 1.125rem;
     max-width: var(--size-control-width-lg);
+  }
+
+  &--full-width {
+    width: 100%;
+    max-width: none;
   }
 
   option {
