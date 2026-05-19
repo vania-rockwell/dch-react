@@ -9,6 +9,7 @@ import type { ReactNode } from "react";
 type ThemeContextType = {
   theme: string;
   mode: "light" | "dark";
+  themeOptions: { value: string; label: string }[];
   setTheme: (theme: string) => void;
   setMode: (mode: "light" | "dark") => void;
 };
@@ -21,7 +22,11 @@ const ThemeContext = createContext<ThemeContextType>(null!);
 
 const THEME_STORAGE_KEY = "dch.theme";
 const MODE_STORAGE_KEY = "dch.mode";
-const VALID_THEMES = new Set(["kalypso", "thermofisher"]);
+const THEME_OPTIONS = [
+  { value: "kalypso", label: "Kalypso" },
+  { value: "thermofisher", label: "Thermofisher" },
+] as const;
+const VALID_THEMES = new Set(THEME_OPTIONS.map((option) => option.value));
 
 function readStoredTheme(): string {
   try {
@@ -77,7 +82,15 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   }, [theme, mode]);
 
   return (
-    <ThemeContext.Provider value={{ theme, mode, setTheme, setMode }}>
+    <ThemeContext.Provider
+      value={{
+        theme,
+        mode,
+        themeOptions: [...THEME_OPTIONS],
+        setTheme,
+        setMode,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

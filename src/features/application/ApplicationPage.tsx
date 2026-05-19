@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import PageSection from "../../components/PageSection/PageSection";
 import { Button } from "../../components/Button/Button";
@@ -9,18 +10,20 @@ import "./ApplicationPage.scss";
 export default function ApplicationPage() {
   const { t: tPages } = useTranslation("pages");
   const { t: tCommon } = useTranslation("common");
-  const { theme, mode, setTheme, setMode } = useTheme();
+  const { theme, mode, themeOptions, setTheme, setMode } = useTheme();
 
-  const themeOptions = [
-    { value: "kalypso", label: "Kalypso" },
-    { value: "thermofisher", label: "Thermofisher" },
-  ];
+  const languageOptions = useMemo(() => {
+    const resources = i18n.options.resources as Record<string, unknown> | undefined;
 
-  const languageOptions = [
-    { value: "en", label: tCommon("languageOption.en") },
-    { value: "es", label: tCommon("languageOption.es") },
-    { value: "it", label: tCommon("languageOption.it") },
-  ];
+    if (resources === undefined) {
+      return [];
+    }
+
+    return Object.keys(resources).map((code) => ({
+      value: code,
+      label: tCommon(`languageOption.${code}`, { defaultValue: code.toUpperCase() }),
+    }));
+  }, [tCommon]);
 
   return (
     <PageSection
