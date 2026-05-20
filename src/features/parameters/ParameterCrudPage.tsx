@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
-import Badge from "@/components/Badge/Badge";
-import type { BadgeColor } from "@/components/Badge/Badge";
+import Badge, { type BadgeColor } from "@/components/Badge/Badge";
 import Input from "@/components/Input/Input";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/Button/Button";
@@ -10,6 +9,7 @@ import Modal from "@/components/Modal/Modal";
 import PageSection from "@/components/PageSection/PageSection";
 import Select from "@/components/Select/Select";
 import Snackbar from "@/components/Snackbar/Snackbar";
+import { Spinner } from "@/components/Spinner/Spinner";
 import i18n from "@/locales/i18n";
 import {
   createParameter,
@@ -328,7 +328,9 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
                   onClick={() => toggleDraftDomain(option.id)}
                   aria-pressed={selected}
                 >
-                  <Badge color={option.color}>{option.label}</Badge>
+                  <Badge color={option.color} size="lg" className={selected ? "badge--selected" : ""}>
+                    {option.label}
+                  </Badge>
                 </button>
               );
             })}
@@ -340,7 +342,7 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
             {t("common:actions.cancel")}
           </Button>
           <Button type="submit" variant={isDelete ? "danger" : "primary"} disabled={isSubmitting}>
-            {submitLabel}
+            {isSubmitting ? <Spinner size="sm" aria-label="Loading" /> : submitLabel}
           </Button>
         </div>
 

@@ -22,12 +22,20 @@ type BadgeColor =
   | "black"
   | "gray";
 
+type BadgeSize = "sm" | "md" | "lg";
+
 interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
    * Color variant applied to the badge.
    * @default "primary"
    */
   color?: BadgeColor;
+
+  /**
+   * Size variant applied to the badge.
+   * @default "sm"
+   */
+  size?: BadgeSize;
 
   /**
    * Badge content.
@@ -57,14 +65,26 @@ const colorStyles: Record<BadgeColor, string> = {
   gray: "badge--gray",
 };
 
+const sizeStyles: Record<BadgeSize, string> = {
+  sm: "badge--sm",
+  md: "badge--md",
+  lg: "badge--lg",
+};
+
 /**
  * Renders a compact status label with theme-aware color variants.
  * @param props Badge visual options and native span props.
  * @returns A reusable badge element.
  */
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
-  ({ color = "primary", children, className = "", ...rest }, ref) => {
-    const classes = ["badge", colorStyles[color], className].filter(Boolean).join(" ");
+  ({ 
+    color = "primary", 
+    size = "sm", 
+    children, 
+    className = "", 
+    ...rest 
+  }, ref) => {
+    const classes = ["badge", colorStyles[color], sizeStyles[size], className].filter(Boolean).join(" ");
 
     return (
       <span ref={ref} className={classes} {...rest}>

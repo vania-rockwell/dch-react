@@ -89,12 +89,12 @@
 		background: none;
 		cursor: pointer;
 		opacity: 0.8;
-		transition: opacity 0.15s, border-color 0.15s;
+		transition: opacity 0.15s, transform 0.15s;
 		line-height: 1;
 
 		&--selected {
 			opacity: 1;
-			border-color: rgb(var(--color-neutral));
+			transform: translateY(-1px);
 		}
 	}
 

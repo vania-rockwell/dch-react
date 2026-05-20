@@ -39,6 +39,7 @@ npm run preview    # preview production build
 ### Components and UI
 
 - Reusable UI belongs in `src/components/ComponentName/` with `ComponentName.tsx` and `ComponentName.scss`.
+- No es necesario crear un archivo `index.ts` para exponer componentes.
 - Use `@` path aliases for internal imports (`components`, `features`, `services`, `utils`, `locales`, etc.) instead of relative paths when possible.
 - Prefer `React.forwardRef` when wrapping native controls.
 - Use explicit TypeScript types; avoid `any`.

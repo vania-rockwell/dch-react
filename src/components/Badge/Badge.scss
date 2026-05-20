@@ -2,125 +2,165 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: .3rem .5rem;
+  --badge-accent: var(--color-primary);
   border-radius: 50rem;
   border: 1px solid transparent;
-  font-size: 0.75rem;
   font-weight: 700;
   line-height: 1;
   white-space: nowrap;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+
+  &--sm {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  &--md {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  &--lg {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+  }
 
   &--primary {
+    --badge-accent: var(--color-primary);
     background-color: rgb(var(--color-primary) / 0.14);
     border-color: rgb(var(--color-primary) / 0.3);
     color: rgb(var(--color-primary));
   }
 
   &--secondary {
+    --badge-accent: var(--color-secondary);
     background-color: rgb(var(--color-secondary) / 0.14);
     border-color: rgb(var(--color-secondary) / 0.3);
     color: rgb(var(--color-secondary));
   }
 
   &--success {
+    --badge-accent: var(--color-success);
     background-color: rgb(var(--color-success) / 0.14);
     border-color: rgb(var(--color-success) / 0.3);
     color: rgb(var(--color-success));
   }
 
   &--danger {
+    --badge-accent: var(--color-danger);
     background-color: rgb(var(--color-danger) / 0.14);
     border-color: rgb(var(--color-danger) / 0.3);
     color: rgb(var(--color-danger));
   }
 
   &--warning {
+    --badge-accent: var(--color-warning);
     background-color: rgb(var(--color-warning) / 0.14);
     border-color: rgb(var(--color-warning) / 0.3);
     color: rgb(var(--color-warning));
   }
 
   &--info {
+    --badge-accent: var(--color-info);
     background-color: rgb(var(--color-info) / 0.14);
     border-color: rgb(var(--color-info) / 0.3);
     color: rgb(var(--color-info));
   }
 
   &--blue {
+    --badge-accent: var(--color-blue);
     background-color: rgb(var(--color-blue) / 0.14);
     border-color: rgb(var(--color-blue) / 0.3);
     color: rgb(var(--color-blue));
   }
 
   &--indigo {
+    --badge-accent: var(--color-indigo);
     background-color: rgb(var(--color-indigo) / 0.14);
     border-color: rgb(var(--color-indigo) / 0.3);
     color: rgb(var(--color-indigo));
   }
 
   &--purple {
+    --badge-accent: var(--color-purple);
     background-color: rgb(var(--color-purple) / 0.14);
     border-color: rgb(var(--color-purple) / 0.3);
     color: rgb(var(--color-purple));
   }
 
   &--pink {
+    --badge-accent: var(--color-pink);
     background-color: rgb(var(--color-pink) / 0.14);
     border-color: rgb(var(--color-pink) / 0.3);
     color: rgb(var(--color-pink));
   }
 
   &--red {
+    --badge-accent: var(--color-red);
     background-color: rgb(var(--color-red) / 0.14);
     border-color: rgb(var(--color-red) / 0.3);
     color: rgb(var(--color-red));
   }
 
   &--orange {
+    --badge-accent: var(--color-orange);
     background-color: rgb(var(--color-orange) / 0.14);
     border-color: rgb(var(--color-orange) / 0.3);
     color: rgb(var(--color-orange));
   }
 
   &--yellow {
+    --badge-accent: var(--color-yellow);
     background-color: rgb(var(--color-yellow) / 0.14);
     border-color: rgb(var(--color-yellow) / 0.3);
     color: rgb(var(--color-yellow));
   }
 
   &--green {
+    --badge-accent: var(--color-green);
     background-color: rgb(var(--color-green) / 0.14);
     border-color: rgb(var(--color-green) / 0.3);
     color: rgb(var(--color-green));
   }
 
   &--teal {
+    --badge-accent: var(--color-teal);
     background-color: rgb(var(--color-teal) / 0.14);
     border-color: rgb(var(--color-teal) / 0.3);
     color: rgb(var(--color-teal));
   }
 
   &--cyan {
+    --badge-accent: var(--color-cyan);
     background-color: rgb(var(--color-cyan) / 0.14);
     border-color: rgb(var(--color-cyan) / 0.3);
     color: rgb(var(--color-cyan));
   }
 
   &--white {
+    --badge-accent: var(--color-black);
     background-color: rgb(var(--color-white));
     border-color: rgb(var(--color-black) / 0.3);
     color: rgb(var(--color-black));
   }
 
   &--black {
+    --badge-accent: var(--color-gray);
     background-color: rgb(var(--color-black) / 0.8);
     border-color: rgb(var(--color-gray) / 0.3);
     color: rgb(var(--color-white));
   }
 
   &--gray {
+    --badge-accent: var(--color-gray);
     background-color: rgb(var(--color-gray) / 0.14);
     border-color: rgb(var(--color-gray) / 0.3);
     color: rgb(var(--color-gray));
+  }
+
+  &--selected {
+    border-color: rgb(var(--badge-accent));
+    box-shadow: 0 0 0 3px rgb(var(--badge-accent) / 0.24);
+    transform: translateY(-1px);
   }
 }
