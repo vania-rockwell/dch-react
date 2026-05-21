@@ -67,6 +67,7 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
   const [draftDomains, setDraftDomains] = useState<string[]>(selectedDomains);
   const [submitSnackbarOpen, setSubmitSnackbarOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [parameterName, setParameterName] = useState("");
 
   const localeCodes = useMemo(() => {
     const resources = i18n.options.resources as Record<string, unknown> | undefined;
@@ -87,7 +88,7 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
       code,
       label: t(`common:languageOption.${code}`, { defaultValue: code.toUpperCase() }),
     }));
-  }, [currentLocale, localeCodes]);
+  }, [currentLocale, localeCodes, t]);
 
   const [names, setNames] = useState<Record<string, string>>(() =>
     localeCodes.reduce<Record<string, string>>((accumulator, code) => {
@@ -118,10 +119,13 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
           return nextNames;
         });
 
+        setParameterName(currentParameter.parameterName);
+
         setDataType(currentParameter.dataType.toLowerCase());
 
         const nextSelectedDomains = currentParameter.capabilityDomains
           .map((domain) =>
+            domainOptions.find((option) => option.id === domain.id)?.id ??
             domainOptions.find(
               (option) => option.label.toLowerCase() === domain.label.toLowerCase()
             )?.id
@@ -193,15 +197,21 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
 
     const currentLocaleName = names[currentLocale]?.trim();
     const firstNonEmptyName = translationName.find((item) => item.value.trim().length > 0)?.value ?? "";
+    const normalizedParameterName = parameterName.trim();
 
     const payload: ParameterUpsertPayload = {
-      parameterName: currentLocaleName && currentLocaleName.length > 0 ? currentLocaleName : firstNonEmptyName,
+      parameterName:
+        !isDelete && normalizedParameterName.length > 0
+          ? normalizedParameterName
+          : currentLocaleName && currentLocaleName.length > 0
+          ? currentLocaleName
+          : firstNonEmptyName,
       translationName,
       dataType,
       capabilityDomains: selectedDomains
         .map((id) => domainOptions.find((option) => option.id === id))
         .filter((option): option is (typeof domainOptions)[number] => option !== undefined)
-        .map((option) => ({ label: option.label, color: option.color })),
+        .map((option) => ({ id: option.id, label: option.label, color: option.color })),
     };
 
     setIsSubmitting(true);
@@ -244,20 +254,32 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
       <form className="parameter-crud" onSubmit={handleSubmit}>
         <div className="parameter-crud__field parameter-crud__field--domains">
           <div className="parameter-crud__label-row">
-            <span className="parameter-crud__label">{t("parameterCrud.fields.capabilityDomain")}</span>
+            <span className="parameter-crud__label">{t("parameters.capabilityDomain")}</span>
             {!isDelete && 
               <Button size="sm" variant="secondary" type="button" icon={Plus} onClick={openDomainModal}>
                 {t("parameterCrud.addCapabilityDomain")}
               </Button>
             }
           </div>
-          <div className="parameter-crud__badges" role="group" aria-label={t("parameterCrud.fields.capabilityDomain")}>
+          <div className="parameter-crud__badges" role="group" aria-label={t("parameters.capabilityDomain")}>
             {selectedDomainBadges.map((option) => (
               <Badge key={option.id} color={option.color}>
                 {option.label}
               </Badge>
             ))}
           </div>
+        </div>
+
+        <div className="parameter-crud__field">
+          <Input
+            id="parameter-name-input"
+            label={t("parameters.parameterName")}
+            value={parameterName}
+            onChange={(event) => setParameterName(event.target.value)}
+            disabled={isDelete}
+            required
+            requiredLabel={t("common:fields.required")}
+          />
         </div>
 
         <div className="parameter-crud__field parameter-crud__field--names">
@@ -289,7 +311,7 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
         </div>
 
         <label className="parameter-crud__field" htmlFor="parameter-data-type-select">
-          <span className="parameter-crud__label">{t("parameterCrud.fields.dataType")}</span>
+          <span className="parameter-crud__label">{t("parameters.dataType")}</span>
           <Select
             id="parameter-data-type-select"
             options={dataTypeOptions}
@@ -303,7 +325,7 @@ export default function ParameterCrudPage({ mode }: ParameterCrudPageProps) {
 
         <Modal
           open={domainModalOpen}
-          title={t("parameterCrud.fields.capabilityDomain")}
+          title={t("parameters.capabilityDomain")}
           onClose={closeDomainModal}
           size="md"
           actions={

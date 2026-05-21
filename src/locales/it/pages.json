@@ -16,15 +16,10 @@
     "searchAria": "Cerca parametri",
     "loading": "Caricamento parametri...",
     "loadError": "Impossibile caricare i parametri.",
-    "table": {
-      "empty": "Nessun parametro trovato.",
-      "headers": {
-        "parameterName": "Nome parametro",
-        "capabilityDomain": "Dominio capacità",
-        "dataType": "Tipo di dato",
-        "contexts": "Contesti"
-      }
-    }
+    "empty": "Nessun parametro trovato.",
+    "parameterName": "Nome parametro",
+    "capabilityDomain": "Dominio capacità",
+    "dataType": "Tipo di dato"
   },
   "parameterCrud": {
     "newTitle": "Aggiungi parametro",
@@ -32,10 +27,6 @@
     "deleteTitle": "Elimina parametro",
     "description": "Crea, aggiorna o rimuovi definizioni di parametri.",
     "deleteWarning": "Questa azione rimuove la definizione del parametro. Conferma prima di procedere.",
-    "fields": {
-      "capabilityDomain": "Dominio capacità",
-      "dataType": "Tipo di dato"
-    },
     "addCapabilityDomain": "Aggiungi dominio capacità",
     "atLeastOneDomain": "Almeno un dominio deve essere selezionato",
     "submitSuccess": {
@@ -87,11 +78,6 @@
   "application": {
     "title": "Applicazione",
     "description": "Rivedi opzioni a livello applicativo e impostazioni operative."
-  },
-  "templatesCustom": {
-    "title": "Modelli personalizzati",
-    "description": "Crea e gestisci modelli personalizzati.",
-    "body": "Definisci modelli personalizzati per scenari di configurazione specifici."
   },
   "applicationModules": {
     "title": "Moduli applicazione",

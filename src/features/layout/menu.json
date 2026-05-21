@@ -22,21 +22,7 @@
       "id": "templates",
       "path": "/templates",
       "labelKey": "nav.templates",
-      "icon": "FileText",
-      "children": [
-        {
-          "id": "templates-library",
-          "path": "/templates",
-          "labelKey": "nav.templatesLibrary",
-          "level": 2
-        },
-        {
-          "id": "templates-custom",
-          "path": "/templates/custom",
-          "labelKey": "nav.templatesCustom",
-          "level": 2
-        }
-      ]
+      "icon": "FileText"
     },
     {
       "id": "asset-configuration",

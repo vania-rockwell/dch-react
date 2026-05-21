@@ -5,7 +5,6 @@ import CatalogsPage from "./features/catalogs/CatalogsPage";
 import ParametersPage from "./features/parameters/ParametersPage";
 import ParameterCrudPage from "./features/parameters/ParameterCrudPage";
 import TemplatesPage from "./features/templates/TemplatesPage";
-import TemplatesCustomPage from "./features/templates/TemplatesCustomPage";
 import AssetConfigurationPage from "./features/asset-configuration/AssetConfigurationPage";
 import ApplicationPage from "./features/application/ApplicationPage";
 import ApplicationModulesPage from "./features/application/ApplicationModulesPage";
@@ -36,7 +35,6 @@ export const router = createBrowserRouter([
         element: <ParameterCrudPage mode="delete" />,
       },
       { path: "templates", element: <TemplatesPage /> },
-      { path: "templates/custom", element: <TemplatesCustomPage /> },
       { path: "asset-configuration", element: <AssetConfigurationPage /> },
       { path: "application", element: <ApplicationPage /> },
       { path: "application/modules", element: <ApplicationModulesPage /> },

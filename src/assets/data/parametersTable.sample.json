@@ -10,8 +10,8 @@
       ],
       "dataType": "Boolean",
       "capabilityDomains": [
-        { "label": "Vials", "color": "purple" },
-        { "label": "Batch", "color": "blue" }
+        { "id": "vials", "label": "Vials", "color": "purple" },
+        { "id": "batch", "label": "Batch", "color": "blue" }
       ]
     },
     {
@@ -35,8 +35,8 @@
       ],
       "dataType": "Boolean",
       "capabilityDomains": [
-        { "label": "Production", "color": "primary" },
-        { "label": "Machine Event", "color": "gray" }
+        { "id": "production", "label": "Production", "color": "primary" },
+        { "id": "machine-event", "label": "Machine Event", "color": "gray" }
       ]
     }
   ]

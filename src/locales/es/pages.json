@@ -16,15 +16,10 @@
     "searchAria": "Buscar parámetros",
     "loading": "Cargando parámetros...",
     "loadError": "No se pudieron cargar los parámetros.",
-    "table": {
-      "empty": "No se encontraron parámetros.",
-      "headers": {
-        "parameterName": "Nombre del parámetro",
-        "capabilityDomain": "Dominio de capacidad",
-        "dataType": "Tipo de dato",
-        "contexts": "Contextos"
-      }
-    }
+    "empty": "No se encontraron parámetros.",
+    "parameterName": "Nombre del parámetro",
+    "capabilityDomain": "Dominio de capacidad",
+    "dataType": "Tipo de dato"
   },
   "parameterCrud": {
     "newTitle": "Agregar parámetro",
@@ -32,10 +27,6 @@
     "deleteTitle": "Eliminar parámetro",
     "description": "Cree, actualice o elimine definiciones de parámetros.",
     "deleteWarning": "Esta acción elimina la definición del parámetro. Confirme antes de continuar.",
-    "fields": {
-      "capabilityDomain": "Dominio de capacidad",
-      "dataType": "Tipo de dato"
-    },
     "addCapabilityDomain": "Agregar dominio de capacidad",
     "atLeastOneDomain": "Al menos un dominio debe estar seleccionado",
     "submitSuccess": {
@@ -87,11 +78,6 @@
   "application": {
     "title": "Aplicación",
     "description": "Revise las opciones a nivel de aplicación y la configuración operativa."
-  },
-  "templatesCustom": {
-    "title": "Plantillas personalizadas",
-    "description": "Cree y administre plantillas personalizadas.",
-    "body": "Defina plantillas personalizadas para escenarios específicos de configuración."
   },
   "applicationModules": {
     "title": "Módulos de aplicación",

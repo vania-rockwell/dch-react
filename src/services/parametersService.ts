@@ -6,6 +6,7 @@ const MOCK_LATENCY_MS = 300;
 const PARAMETERS_ENDPOINT = "/parameters";
 
 export type ParameterCapabilityDomains = {
+  id: string;
   label: string;
   color: BadgeColor;
 };

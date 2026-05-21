@@ -16,15 +16,10 @@
     "searchAria": "Search parameters",
     "loading": "Loading parameters...",
     "loadError": "Could not load parameters.",
-    "table": {
-      "empty": "No parameters found.",
-      "headers": {
-        "parameterName": "Parameter Name",
-        "capabilityDomain": "Capability Domain",
-        "dataType": "Data Type",
-        "contexts": "Contexts"
-      }
-    }
+    "empty": "No parameters found.",
+    "parameterName": "Parameter Name",
+    "capabilityDomain": "Capability Domain",
+    "dataType": "Data Type"
   },
   "parameterCrud": {
     "newTitle": "Add Parameter",
@@ -32,10 +27,6 @@
     "deleteTitle": "Delete Parameter",
     "description": "Create, update, or remove parameter definitions.",
     "deleteWarning": "This action removes the parameter definition. Please confirm before continuing.",
-    "fields": {
-      "capabilityDomain": "Capability Domain",
-      "dataType": "Data Type"
-    },
     "addCapabilityDomain": "Add Capability Domain",
     "atLeastOneDomain": "At least one domain must be selected",
     "submitSuccess": {
@@ -87,11 +78,6 @@
   "application": {
     "title": "Application",
     "description": "Review application-level options and operational settings."
-  },
-  "templatesCustom": {
-    "title": "Custom Templates",
-    "description": "Create and manage custom templates.",
-    "body": "Define custom templates for specific configuration scenarios."
   },
   "applicationModules": {
     "title": "Application Modules",

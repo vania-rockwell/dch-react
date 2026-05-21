@@ -68,7 +68,7 @@ export default function ParametersPage() {
   const columns: TableColumn<ParameterTableRow>[] = [
     {
       key: "parameterName",
-      header: t("parameters.table.headers.parameterName"),
+      header: t("parameters.parameterName"),
     },
     {
       key: "translationName",
@@ -85,11 +85,11 @@ export default function ParametersPage() {
     },
     {
       key: "dataType",
-      header: t("parameters.table.headers.dataType"),
+      header: t("parameters.dataType"),
     },
     {
       key: "capabilityDomains",
-      header: t("parameters.table.headers.capabilityDomain"),
+      header: t("parameters.capabilityDomain"),
       render: (value) => {
         const domains = value as ParameterTableRow["capabilityDomains"];
         return (
@@ -151,7 +151,7 @@ export default function ParametersPage() {
           columns={columns}
           rows={filteredRows}
           rowKey="id"
-          emptyLabel={t("parameters.table.empty")}
+          emptyLabel={t("parameters.empty")}
         />
 
         {isLoading && <p className="parameters-page__state">{t("parameters.loading")}</p>}
