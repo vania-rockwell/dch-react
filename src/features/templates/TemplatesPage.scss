@@ -1,0 +1,541 @@
+// ---- Outer page wrapper ----
+.templates-page {
+  min-height: calc(100vh - var(--space-header-height) - 2 * var(--space-6));
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  // Make the PageSection grow to fill the wrapper.
+  .page-section {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__loader {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    opacity: 0.7;
+    font-size: 0.9375rem;
+  }
+
+  &__error {
+    padding: var(--space-4);
+    color: rgb(var(--color-danger));
+    font-size: 0.9375rem;
+  }
+}
+
+// ---- Two-column explorer layout ----
+.tpl-explorer {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(14rem, 22rem) 1fr;
+  gap: var(--space-3);
+  align-items: stretch;
+
+  @media (max-width: 58rem) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ---- Left panel: template tree ----
+.tpl-tree-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border: 1px solid rgb(var(--color-neutral) / 0.15);
+  border-radius: var(--radius-md);
+  background: rgb(var(--color-surface));
+  overflow: hidden;
+
+  &__search {
+    padding: var(--space-3) var(--space-3) 0;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3) var(--space-3);
+    border-bottom: 1px solid rgb(var(--color-neutral) / 0.1);
+  }
+
+  &__tree {
+    flex: 1;
+    overflow: auto;
+    padding: var(--space-2) 0;
+    min-height: 0;
+  }
+
+  &__empty {
+    padding: var(--space-5) var(--space-4);
+    text-align: center;
+    font-size: 0.875rem;
+    opacity: 0.55;
+    margin: 0;
+  }
+}
+
+// ---- Right panel: detail ----
+.tpl-detail-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border: 1px solid rgb(var(--color-neutral) / 0.15);
+  border-radius: var(--radius-md);
+  background: rgb(var(--color-surface));
+  overflow: hidden;
+
+  &__placeholder {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    opacity: 0.4;
+    text-align: center;
+    padding: var(--space-8);
+    font-size: 0.9375rem;
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid rgb(var(--color-neutral) / 0.12);
+    background: rgb(var(--color-surface));
+  }
+
+  &__header-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__breadcrumb {
+    margin: var(--space-1) 0 0;
+    font-size: 0.75rem;
+    opacity: 0.55;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+// Tabs fill the remaining height inside the panel.
+.tpl-detail-tabs {
+  flex: 1;
+  min-height: 0;
+
+  // Give the TabList consistent horizontal padding.
+  .tabs__list {
+    padding-left: var(--space-5);
+    margin-bottom: 0;
+  }
+
+  // Each panel fills the remaining space.
+  .tabs__panel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+}
+
+// ---- Definition tab ----
+.tpl-definition {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  &__parent-path {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    font-size: 0.8125rem;
+    margin-bottom: var(--space-4);
+    opacity: 0.7;
+  }
+
+  &__path-label {
+    font-weight: 600;
+  }
+
+  &__path-seg {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-5);
+
+    @media (max-width: 52rem) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  // Reused by ParametersTab too.
+  &__label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.65;
+    display: block;
+    margin-bottom: var(--space-1);
+  }
+
+  &__section {
+    margin-bottom: var(--space-5);
+  }
+
+  &__section-title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.65;
+    margin: 0 0 var(--space-2);
+  }
+
+  &__labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: center;
+    min-height: 1.875rem;
+  }
+
+  &__label-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 0.1875rem var(--space-2) 0.1875rem var(--space-3);
+    background: rgb(var(--color-primary) / 0.1);
+    color: rgb(var(--color-primary));
+    border-radius: var(--radius-xl);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  &__label-remove {
+    display: inline-flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.12s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgb(var(--color-primary) / 0.5);
+      border-radius: var(--radius-sm);
+    }
+  }
+
+  &__no-labels {
+    font-size: 0.875rem;
+    opacity: 0.4;
+  }
+
+  &__label-add {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    max-width: 24rem;
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--space-2);
+    justify-content: flex-end;
+    padding-top: var(--space-4);
+    margin-top: auto;
+    border-top: 1px solid rgb(var(--color-neutral) / 0.1);
+  }
+}
+
+// ---- Parameters tab ----
+.tpl-params {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid rgb(var(--color-neutral) / 0.1);
+    flex-shrink: 0;
+  }
+
+  &__empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    opacity: 0.4;
+    font-size: 0.9375rem;
+    text-align: center;
+    padding: var(--space-8);
+  }
+
+  &__body {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(12rem, 18rem) 1fr;
+    overflow: hidden;
+
+    @media (max-width: 52rem) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__tree {
+    border-right: 1px solid rgb(var(--color-neutral) / 0.1);
+    overflow-y: auto;
+    padding: var(--space-2) 0;
+    min-height: 0;
+  }
+
+  &__detail {
+    overflow-y: auto;
+    padding: var(--space-5);
+    min-height: 0;
+  }
+
+  &__detail-placeholder {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    opacity: 0.4;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+}
+
+// Category/parameter tree node labels
+.tpl-param-node {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.875rem;
+
+  &__label {
+    flex: 1;
+  }
+
+  &--cat {
+    font-weight: 500;
+  }
+
+  &--param {
+    opacity: 0.85;
+  }
+}
+
+// ---- Category / parameter detail panel ----
+.tpl-cat-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  &__kind {
+    margin: 0 0 var(--space-3);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.55;
+  }
+
+  &__breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    font-size: 0.8125rem;
+    opacity: 0.6;
+    margin-bottom: var(--space-4);
+  }
+
+  &__breadcrumb-seg {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+
+    &--readonly {
+      background: rgb(var(--color-surface-raised, var(--color-surface)));
+      border: 1px solid rgb(var(--color-neutral) / 0.1);
+      border-radius: var(--radius-md);
+      padding: var(--space-3);
+    }
+  }
+
+  &__value {
+    margin: 0;
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--space-2);
+  }
+}
+
+// ---- Shared modal form layout ----
+.tpl-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  &__context {
+    margin: 0;
+    font-size: 0.875rem;
+    opacity: 0.7;
+  }
+
+  &__warning {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+}
+
+// ---- Parameter picker (inside Add Parameter modal) ----
+.tpl-param-picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+
+  &__context {
+    margin: 0 0 var(--space-3);
+    font-size: 0.875rem;
+    opacity: 0.7;
+  }
+
+  &__list {
+    max-height: 15rem;
+    overflow-y: auto;
+    border: 1px solid rgb(var(--color-neutral) / 0.15);
+    border-radius: var(--radius-md);
+  }
+
+  &__loader,
+  &__empty {
+    padding: var(--space-4);
+    text-align: center;
+    opacity: 0.55;
+    font-size: 0.875rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    cursor: pointer;
+    border-bottom: 1px solid rgb(var(--color-neutral) / 0.08);
+    transition: background 0.1s;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: rgb(var(--color-primary) / 0.06);
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgb(var(--color-primary) / 0.5);
+      outline-offset: -2px;
+    }
+
+    &--selected {
+      background: rgb(var(--color-primary) / 0.1);
+    }
+  }
+
+  &__item-name {
+    flex: 1;
+    font-size: 0.875rem;
+    font-weight: 500;
+    min-width: 8rem;
+  }
+
+  &__instance {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+}

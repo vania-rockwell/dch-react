@@ -18,8 +18,10 @@
     min-height: var(--tree-row-height);
     border-radius: var(--radius-sm);
 
-    &:hover:not(:has(.tree-item__select:focus-visible)) {
-      background-color: rgb(var(--color-neutral) / 0.18);
+    &:hover {
+      background-color: rgb(var(--color-neutral) / 0.6);
+      outline: 1px solid rgb(var(--color-neutral));
+      outline-offset: -1px;
     }
 
     &--selected {
@@ -28,7 +30,9 @@
       outline-offset: -1px;
 
       &:hover {
-        background-color: rgb(var(--color-primary) / 0.16);
+        background-color: rgb(var(--color-primary) / 0.2);
+        outline: 1px solid rgb(var(--color-primary) / 0.5);
+        outline-offset: -1px;
       }
     }
   }

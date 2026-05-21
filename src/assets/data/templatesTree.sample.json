@@ -1,0 +1,279 @@
+{
+  "data": [
+    {
+      "id": "thermo",
+      "parentId": null,
+      "name": "Thermo",
+      "description": "Top-level Thermo organization template",
+      "modelLevel": "Enterprise",
+      "status": "Released",
+      "inheritedLabels": [],
+      "ownLabels": [],
+      "categories": []
+    },
+    {
+      "id": "psg",
+      "parentId": "thermo",
+      "name": "PSG",
+      "description": "Pharmaceutical Solutions Group",
+      "modelLevel": "Site",
+      "status": "Released",
+      "inheritedLabels": [],
+      "ownLabels": [],
+      "categories": []
+    },
+    {
+      "id": "psg-site",
+      "parentId": "psg",
+      "name": "PSG Site",
+      "description": "PSG manufacturing site",
+      "modelLevel": "Site",
+      "status": "Released",
+      "inheritedLabels": [],
+      "ownLabels": [],
+      "categories": []
+    },
+    {
+      "id": "steriles",
+      "parentId": "psg-site",
+      "name": "Steriles",
+      "description": "Sterile manufacturing area",
+      "modelLevel": "Area",
+      "status": "Released",
+      "inheritedLabels": [],
+      "ownLabels": [],
+      "categories": []
+    },
+    {
+      "id": "syringes-line",
+      "parentId": "steriles",
+      "name": "Syringes Line",
+      "description": "Syringes production line",
+      "modelLevel": "Line",
+      "status": "Released",
+      "inheritedLabels": ["ChangeoverTracker-CO Process"],
+      "ownLabels": [],
+      "categories": []
+    },
+    {
+      "id": "syringes-filler",
+      "parentId": "syringes-line",
+      "name": "Syringes Filler",
+      "description": "Syringes Filler workunit template",
+      "modelLevel": "Workunit",
+      "status": "Released",
+      "inheritedLabels": ["ChangeoverTracker-CO Process"],
+      "ownLabels": [
+        "LineView-Module",
+        "ChangeoverTracker-Module",
+        "AlarmCatcher-Module",
+        "WorkcenterView-Module",
+        "BatchTransition-Module"
+      ],
+      "categories": [
+        {
+          "id": "sf-cat-changeover",
+          "name": "Changeover",
+          "sequence": 1,
+          "parameters": [],
+          "children": [
+            {
+              "id": "sf-cat-cycles",
+              "name": "Cycles",
+              "sequence": 1,
+              "parameters": [],
+              "children": [
+                {
+                  "id": "sf-cat-cip",
+                  "name": "CIP",
+                  "sequence": 1,
+                  "parameters": [],
+                  "children": [
+                    {
+                      "id": "sf-cat-cip-steps",
+                      "name": "Steps",
+                      "sequence": 1,
+                      "parameters": [
+                        {
+                          "id": "sf-prm-cip-step1",
+                          "parameterId": "batch-start",
+                          "instanceName": "CIP Step 1",
+                          "dataType": "Boolean"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "id": "sf-cat-cip-target",
+                      "name": "TargetTimes",
+                      "sequence": 2,
+                      "parameters": [
+                        {
+                          "id": "sf-prm-cip-target1",
+                          "parameterId": "batch-stop",
+                          "instanceName": "Step1",
+                          "dataType": "Boolean"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "id": "sf-cat-cip-state",
+                      "name": "State",
+                      "sequence": 3,
+                      "parameters": [
+                        {
+                          "id": "sf-prm-cip-state1",
+                          "parameterId": "machine-event-enabled",
+                          "instanceName": "isCIPActive",
+                          "dataType": "Boolean"
+                        },
+                        {
+                          "id": "sf-prm-cip-state2",
+                          "parameterId": "machine-event-enabled",
+                          "instanceName": "activeCIPStepNumber",
+                          "dataType": "Boolean"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "sf-cat-sip",
+                  "name": "SIP",
+                  "sequence": 2,
+                  "parameters": [],
+                  "children": [
+                    {
+                      "id": "sf-cat-sip-state",
+                      "name": "State",
+                      "sequence": 1,
+                      "parameters": [
+                        {
+                          "id": "sf-prm-sip-state1",
+                          "parameterId": "machine-event-enabled",
+                          "instanceName": "isSIPActive",
+                          "dataType": "Boolean"
+                        },
+                        {
+                          "id": "sf-prm-sip-state2",
+                          "parameterId": "batch-stop",
+                          "instanceName": "activeSIPStepNumber",
+                          "dataType": "Boolean"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "sf-cat-events",
+              "name": "Events",
+              "sequence": 2,
+              "parameters": [
+                {
+                  "id": "sf-prm-event-autoclave",
+                  "parameterId": "batch-start",
+                  "instanceName": "Autoclave",
+                  "dataType": "Boolean"
+                },
+                {
+                  "id": "sf-prm-event-pupsit",
+                  "parameterId": "batch-stop",
+                  "instanceName": "PUPSIT",
+                  "dataType": "Boolean"
+                },
+                {
+                  "id": "sf-prm-event-setup",
+                  "parameterId": "machine-event-enabled",
+                  "instanceName": "Setup",
+                  "dataType": "Boolean"
+                },
+                {
+                  "id": "sf-prm-event-partwash",
+                  "parameterId": "batch-start",
+                  "instanceName": "PartWash",
+                  "dataType": "Boolean"
+                }
+              ],
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "sf-cat-delay",
+          "name": "Delay Reasons",
+          "sequence": 2,
+          "parameters": [],
+          "children": [
+            {
+              "id": "sf-cat-delay-autoclave",
+              "name": "Autoclave",
+              "sequence": 1,
+              "parameters": [],
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dba",
+      "parentId": "syringes-line",
+      "name": "DBA",
+      "description": "DBA workunit template",
+      "modelLevel": "Workunit",
+      "status": "Released",
+      "inheritedLabels": ["ChangeoverTracker-CO Process"],
+      "ownLabels": [],
+      "categories": []
+    },
+    {
+      "id": "iso-syringes",
+      "parentId": "syringes-line",
+      "name": "ISO",
+      "description": "ISO workunit template for syringes line",
+      "modelLevel": "Workunit",
+      "status": "Draft",
+      "inheritedLabels": [],
+      "ownLabels": [],
+      "categories": []
+    },
+    {
+      "id": "vials-line",
+      "parentId": "steriles",
+      "name": "Vials Line",
+      "description": "Vials production line",
+      "modelLevel": "Line",
+      "status": "Released",
+      "inheritedLabels": [],
+      "ownLabels": ["LineView-Module"],
+      "categories": []
+    },
+    {
+      "id": "vial-filler",
+      "parentId": "vials-line",
+      "name": "Vial Filler",
+      "description": "Vial Filler workunit template",
+      "modelLevel": "Workunit",
+      "status": "Released",
+      "inheritedLabels": [],
+      "ownLabels": [],
+      "categories": []
+    },
+    {
+      "id": "tray-loader",
+      "parentId": "vials-line",
+      "name": "Tray Loader",
+      "description": "Tray Loader workunit template",
+      "modelLevel": "Workunit",
+      "status": "Released",
+      "inheritedLabels": [],
+      "ownLabels": [],
+      "categories": []
+    }
+  ]
+}
